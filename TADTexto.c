@@ -9,7 +9,9 @@ void inicializaTexto(TTexto* texto, int TextoTamanho)
         inicializaPalavra(&texto->palavras[x]);
     }
     texto->numeroPalavras = 0;
+    return;
 }
+
 void inserePalavra(TTexto* texto, TPalavra* palavra)
 {
     strcpy(texto->palavras[texto->numeroPalavras].letras , palavra->letras);
@@ -45,6 +47,7 @@ void removePalavra(TTexto* texto, int pos)
     }
     //system("pause");
     texto->numeroPalavras--;
+    return;
 }
 
 void removePalavraLoop(TTexto* texto)
@@ -56,6 +59,7 @@ void removePalavraLoop(TTexto* texto)
         //printf("Hi");
         removePalavra(texto, 0);
     }
+    return;
 }
 
 void imprimeTexto(TTexto* texto)
@@ -71,10 +75,12 @@ void imprimeTexto(TTexto* texto)
 
     }
     printf("\n");
+    return;
 }
 void tamanhoTexto(TTexto* texto)
 {
     printf("Tamanho: %d\n", texto->numeroPalavras);
+    return;
 }
 
 
@@ -103,4 +109,49 @@ void ordenaPalavra(TTexto* texto)
         texto->palavras[min_idx] = texto->palavras[i];
         texto->palavras[i] = temp;
     }
+    return;
 }
+
+//Quicksort Texto
+
+void quickSort(TPalavra* palavra, int low, int high)
+{
+    if (low < high)
+    {
+        /* pi is partitioning index, palavra[p] is now
+           at right place */
+        int pi = particao(palavra, low, high);
+
+        // Separately sort elements before
+        // partition and after partition
+        quickSort(palavra, low, pi - 1);
+        quickSort(palavra, pi + 1, high);
+    }
+}
+
+int particao (TPalavra* palavra, int low, int high)
+{
+    int pivot = palavra[high].letras[0];    // pivot
+    int i = (low - 1);  // Index of smaller element
+    for (int j = low; j <= high- 1; j++)
+    {
+        // If current element is smaller than the pivot
+        if (palavra[j].letras[0] < pivot)
+        {
+            i++;    // increment index of smaller element
+            troca(&palavra[i], &palavra[j]);
+        }
+    }
+    troca(&palavra[i + 1], &palavra[high]);
+    return (i + 1);
+}
+
+
+void troca(TPalavra* a, TPalavra* b)
+{
+    TPalavra t = *a;
+    *a = *b;
+    *b = t;
+}
+
+

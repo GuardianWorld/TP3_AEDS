@@ -4,7 +4,9 @@ void inicializaPalavra(TPalavra* palavra)
     palavra->letras = (char*)malloc(100 * sizeof(char));
     int x;
     palavra->tamanho = 0;
+    return;
 }
+
 void insereLetra(TPalavra* palavra, char letra)
 {
     if(palavra->tamanho == MAXWORD - 1)
@@ -43,6 +45,7 @@ void removeLetra(TPalavra* palavra, char letra)
        }
     }
     palavra->tamanho--;
+    return;
 }
 
 void removeLetraLoop(TPalavra* palavra)
@@ -53,14 +56,17 @@ void removeLetraLoop(TPalavra* palavra)
     {
         removeLetra(palavra, palavra->letras[0]);
     }
+    return;
 }
 
 void imprimePalavra(TPalavra palavra)
 {
     printf("Palavra: %s\n", palavra.letras);
+    return;
 }
 
 void tamanhoPalavra(TPalavra* palavra)
 {
     printf("Tamanho: %d\n", palavra->tamanho);
+    return;
 }

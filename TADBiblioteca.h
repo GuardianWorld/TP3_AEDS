@@ -25,4 +25,10 @@ void removeTextoLoop(TBiblioteca* Biblioteca);
 void imprimeBiblioteca(TBiblioteca* Biblioteca);
 void tamanhoBiblioteca(TBiblioteca* Biblioteca);
 void ordenaTexto(TBiblioteca* Biblioteca);
+
+int partitionbib (TTexto* arr, int low, int high);
+void swapbib(TTexto* a, TTexto* b);
+
+void quickSortbib(TTexto* arr, int low, int high);
+
 #endif // TTADBIBLIOTECA_H_INCLUDED

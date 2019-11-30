@@ -10,6 +10,7 @@ int main()
     int input, input2,input3 ,x,y,z;
     int inicializado = 0;
     int ordenaMenu = 0;
+    int random = 0;
     char inputLetra;
     input = -2;
     TPalavra word;
@@ -19,11 +20,11 @@ int main()
     //inicializaPalavra(&word);
     srand((unsigned int)time(NULL));
 
-    printf("|========================|\n");
-    printf("|     Selecao de modo    |\n");
-    printf("| 0) Modo Automatico     |\n");
-    printf("| 1) Modo Manual         |\n");
-    printf("|========================|\n\n");
+    printf(" |========================|\n");
+    printf(" |     Selecao de modo    |\n");
+    printf(" | 0) Modo Vetor          |\n");
+    printf(" | 1) Modo Lista Enc.     |\n");
+    printf(" |========================|\n\n");
 
     scanf("%d", &input);
     printf("\n");
@@ -41,21 +42,21 @@ int main()
         #endif // __linux__*/
         if(ordenaMenu == 0)
         {
-        printf("|===========================|\n");
-        printf("|        Menu funcao        |\n");
-        printf("| 0) Inicializar funcoes    |\n");
-        printf("| 1) Criar Palavra          |\n");
-        printf("| 2) Criar Texto            |\n");
-        printf("| 3) Criar Biblioteca       |\n");
-        printf("| 4) Remover Palavra        |\n");
-        printf("| 5) Remover Texto          |\n");
-        printf("| 6) Remover Biblioteca     |\n");
-        printf("| 7) Imprimir Palavra       |\n");
-        printf("| 8) Imprimir Texto         |\n");
-        printf("| 9) Imprimir Biblioteca    |\n");
-        printf("| 10) Menu Ordenacao        |\n");
-        printf("| 11) Sair do programa      |\n");
-        printf("|===========================|\n\n");
+        printf(" |===========================|\n");
+        printf(" |        Menu funcao        |\n");
+        printf(" | 0) Inicializar funcoes    |\n");
+        printf(" | 1) Criar Palavra          |\n");
+        printf(" | 2) Criar Texto            |\n");
+        printf(" | 3) Criar Biblioteca       |\n");
+        printf(" | 4) Remover Palavra        |\n");
+        printf(" | 5) Remover Texto          |\n");
+        printf(" | 6) Remover Biblioteca     |\n");
+        printf(" | 7) Imprimir Palavra       |\n");
+        printf(" | 8) Imprimir Texto         |\n");
+        printf(" | 9) Imprimir Biblioteca    |\n");
+        printf(" | 10) Menu Ordenacao        |\n");
+        printf(" | 11) Sair do programa      |\n");
+        printf(" |===========================|\n\n");
 
         scanf("%d", &input);
         if(input == 0)
@@ -97,10 +98,12 @@ int main()
             printf("Insira o numero de letras da palavra: ");
             scanf("%d", &input2);
             removePalavraLoop(&text);
+
             for(x = 0; x < input; x++)
             {
                 removeLetraLoop(&word);
-                for(y = 0; y < input2; y++)
+                 // Randomiza o tamnanho da palavra
+                for(y = 0; y < input2 - rand() % input2; y++)
                 {
                     inputLetra = (rand() % 26) + 65;
                     insereLetra(&word, inputLetra);
@@ -122,10 +125,10 @@ int main()
             for(x = 0; x < input; x++) //Biblioteca
             {
                 removePalavraLoop(&text);
-                for(y = 0; y < input2; y++) //Texto
+                for(y = 0; y < input2 - rand() % input2 ; y++) //Texto
                 {
                     removeLetraLoop(&word);
-                    for(z = 0; z < input3; z++) //Palavra
+                    for(z = 0; z < input3 - rand() % input3; z++) //Palavra
                     {
                         inputLetra = (rand() % 26) + 65;
                         insereLetra(&word, inputLetra);
@@ -205,16 +208,17 @@ int main()
         }
         else if(input == 1)
         {
-            //ordenaTexto(&bib);
+            ordenaTexto(&bib);
         }
         else if(input == 2)
         {
-
+            int n = text.numeroPalavras;
+            quickSort(text.palavras, 0 , n-1);
         }
         else if(input == 3)
         {
-
-
+            int n = bib.tamBiblioteca;
+            quickSortbib(bib.textos, 0 , n-1);
         }
         else if(input == 4)
         {
@@ -226,8 +230,8 @@ int main()
         else if(input == 5)
         {
             printf("Imprimindo Biblioteca\n");
-            //imprimeBiblioteca(&bib);
-            //tamanhoBiblioteca(&bib);
+            imprimeBiblioteca(&bib);
+            tamanhoBiblioteca(&bib);
             system("pause");
         }
         else if(input == 10)
@@ -244,58 +248,6 @@ int main()
     }
 
     }
-
-    /*if(input == 1)
-    {
-           while(input != -1)
-    {
-
-
-
-
-
-        scanf("%d", &input);
-        if(input == 0)
-        {
-            inicializaPalavra(&word);
-            inicializaTexto(&text);
-            inicializaBiblioteca(&bib);
-        }
-        if(input == 1)
-        {
-            inputLetra = (rand() % 25) + 65;
-            insereLetra(&word, inputLetra);
-            //insereTexto(&bib);
-        }
-        if(input == 2)
-        {
-            getchar();
-            scanf("%c", &inputLetra);
-            removeLetra(&word, inputLetra);
-        }
-        if(input == 3)
-        {
-            imprimePalavra(word);
-            //imprimeBiblioteca(&bib);
-        }
-        if(input == 4)
-        {
-            //tamanhoPalavra(&word);
-            tamanhoBiblioteca(&bib);
-        }
-            //Remove texto
-            printf("Digite a posicao da palavra no texto a ser removida: ");
-            scanf("%d", &input);
-            removePalavra(&text, input);
-            input = -1;
-
-            //Remove biblioteca
-            printf("Digite a posicao do texto na biblioteca a ser removido: ");
-            scanf("%d", &input);
-            removeTexto(&bib, input);
-            input = -1;
-    }
-    }*/
 
     return 0;
 }

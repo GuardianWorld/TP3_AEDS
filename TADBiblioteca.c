@@ -90,8 +90,7 @@ void tamanhoBiblioteca(TBiblioteca* Biblioteca)
 }
 
 
-/*void ordenaTexto(TBiblioteca* Biblioteca)
-{
+void ordenaTexto(TBiblioteca* Biblioteca){
 
     int i, j, min_idx;
     TTexto temp;
@@ -115,5 +114,48 @@ void tamanhoBiblioteca(TBiblioteca* Biblioteca)
         Biblioteca->textos[min_idx] = Biblioteca->textos[i];
         Biblioteca->textos[i] = temp;
     }
-}*/
+}
 
+//Quicksort
+
+
+void quickSortbib(TTexto* texto, int low, int high)
+{
+    if (low < high)
+    {
+        /* pi is partitioning index, arr[p] is now
+           at right place */
+        int pi = partitionbib(texto, low, high);
+
+        // Separately sort elements before
+        // partition and after partition
+        quickSortbib(texto, low, pi - 1);
+        quickSortbib(texto, pi + 1, high);
+    }
+}
+
+int partitionbib (TTexto* texto, int low, int high)
+{
+    int pivot = texto[high].numeroPalavras;
+    //printf("=%d=",texto[high].numeroPalavras);    // pivot
+    int i = (low - 1);  // Index of smaller element
+    for (int j = low; j <= high- 1; j++)
+    {
+        // If current element is smaller than the pivot
+        if (texto[j].numeroPalavras < pivot)
+        {
+            i++;    // increment index of smaller element
+            swapbib(&texto[i], &texto[j]);
+        }
+    }
+    swapbib(&texto[i + 1], &texto[high]);
+    return (i + 1);
+}
+
+
+void swapbib(TTexto* a, TTexto* b)
+{
+    TTexto t = *a;
+    *a = *b;
+    *b = t;
+}
