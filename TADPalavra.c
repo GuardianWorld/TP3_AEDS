@@ -1,6 +1,7 @@
 #include "TADPalavra.h"
 void inicializaPalavra(TPalavra* palavra)
 {
+    palavra->palavra = (char*)malloc(10 * sizeof(char));
     palavra->palavra[0] = '\0';
     palavra->tamanho = 0;
 }

@@ -4,9 +4,20 @@
 #define MAXWORD 100
 
 typedef struct{
-    char palavra[MAXWORD];
+    char* palavra;
     int tamanho;
 }TPalavra;
+
+typedef struct{
+    char* ProxLetra;
+    char letra;
+}TPalavraEncadeada;
+
+typedef struct{
+    char* pPrimeiro;
+    char* pUltimo;
+    int tamanho;
+}TlistaPalavra;
 
 void inicializaPalavra(TPalavra* palavra);
 void insereLetra(TPalavra* palavra, char letra);

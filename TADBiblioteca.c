@@ -1,8 +1,25 @@
 #include "TADTexto.h"
 #include "TADPalavra.h"
 #include "TADBiblioteca.h"
-void inicializaBiblioteca(TBiblioteca* Biblioteca)
+void inicializaBiblioteca(TBiblioteca* Biblioteca, int TamanhoTextos,int TamanhoBib)
 {
+    int x;
+    //Biblioteca->textos = malloc(TamanhoBib * sizeof(TTexto));
+    /*for(x = 0; x < TamanhoTextos; x++)
+    {
+
+    }*/
+    /*inicializaTexto(&Biblioteca->textos[0].texto, TamanhoTextos);
+    inicializaTexto(&Biblioteca->textos[1].texto, TamanhoTextos);
+    inicializaTexto(&Biblioteca->textos[2].texto, TamanhoTextos);
+    inicializaTexto(&Biblioteca->textos[3].texto, TamanhoTextos);
+    inicializaTexto(&Biblioteca->textos[4].texto, TamanhoTextos);
+    inicializaTexto(&Biblioteca->textos[5].texto, TamanhoTextos);
+    inicializaTexto(&Biblioteca->textos[6].texto, TamanhoTextos);
+    inicializaTexto(&Biblioteca->textos[7].texto, TamanhoTextos);
+    inicializaTexto(&Biblioteca->textos[8].texto, TamanhoTextos);
+    inicializaTexto(&Biblioteca->textos[9].texto, TamanhoTextos);*/
+
     Biblioteca->tamBiblioteca = 0;
 }
 void insereTexto(TBiblioteca* Biblioteca, TTexto* texto)
@@ -84,4 +101,29 @@ void tamanhoBiblioteca(TBiblioteca* Biblioteca)
 }
 
 
+void ordenaTexto(TBiblioteca* Biblioteca)
+{
 
+    int i, j, min_idx;
+    TTexto temp;
+    int n = Biblioteca->tamBiblioteca;
+    //int ver1,ver2
+
+    // One by one move boundary of unsorted subarray
+    for (i = 0; i < n-1; i++)
+    {
+        // Find the minimum element in unsorted array
+        min_idx = i;
+        for (j = i+1; j < n; j++){
+            //ver1 = arrj[j];
+            //ver2 = arr[min_idx];
+          if (Biblioteca->textos[j].numeroPalavras < Biblioteca->textos[min_idx].numeroPalavras){
+            min_idx = j;
+          }
+        }
+
+        temp = Biblioteca->textos[min_idx];
+        Biblioteca->textos[min_idx] = Biblioteca->textos[i];
+        Biblioteca->textos[i] = temp;
+    }
+}
