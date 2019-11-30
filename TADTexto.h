@@ -11,17 +11,6 @@ typedef struct{
     TPalavra* palavras;
 }TTexto;
 
-typedef struct{
-    char* ProxPalavra;
-    TPalavra palavra;
-}TTextoEncadeada;
-
-typedef struct{
-    char* pPrimeiro;
-    char* pUltimo;
-    int numeroPalavras;
-}TListaTexto;
-
 void mainTexto(TPalavra* palavra, TTexto* texto);
 void inicializaTexto(TTexto* texto, int TextoTamanho);
 void inserePalavra(TTexto* texto, TPalavra* palavra);

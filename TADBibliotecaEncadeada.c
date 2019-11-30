@@ -1,8 +1,7 @@
 #include "TADTexto.h"
 #include "TADPalavra.h"
 #include "TADBiblioteca.h"
-#include <time.h>
-void inicializaBiblioteca(TBiblioteca* Biblioteca, int TamanhoTextos,int TamanhoBib)
+/*void inicializaBiblioteca(TBiblioteca* Biblioteca, int TamanhoTextos,int TamanhoBib)
 {
     int x;
     Biblioteca->textos = malloc(TamanhoBib * sizeof(TTexto));
@@ -93,11 +92,6 @@ void tamanhoBiblioteca(TBiblioteca* Biblioteca)
 
 void ordenaTexto(TBiblioteca* Biblioteca){
 
-    int comparacao = 0, movimentacao = 0; //Comparações e movimentação
-    clock_t Ticks[2];
-    Ticks[0] = clock();
-    Ticks[1] = clock();
-
     int i, j, min_idx;
     TTexto temp;
     int n = Biblioteca->tamBiblioteca;
@@ -113,41 +107,34 @@ void ordenaTexto(TBiblioteca* Biblioteca){
             //ver2 = arr[min_idx];
           if (Biblioteca->textos[j].numeroPalavras < Biblioteca->textos[min_idx].numeroPalavras){
             min_idx = j;
-            comparacao++;
           }
         }
 
         temp = Biblioteca->textos[min_idx];
         Biblioteca->textos[min_idx] = Biblioteca->textos[i];
         Biblioteca->textos[i] = temp;
-        movimentacao += 2;
-
     }
-    Ticks[1] = clock();
-    double Tempo = (Ticks[1] - Ticks[0]) * 1000.0 / CLOCKS_PER_SEC;
-    printf("Tempo total da CPU para organizar via selecao: %g ms\n", Tempo);
-    printf("Total de Comparacoes: %d, Total de Movimentacoes: %d\n", comparacao, movimentacao);
 }
 
 //Quicksort
 
 
-void quickSortbib(TTexto* texto, int low, int high, int* comp, int* mov)
+void quickSortbib(TTexto* texto, int low, int high)
 {
     if (low < high)
     {
         /* pi is partitioning index, arr[p] is now
            at right place */
-        int pi = partitionbib(texto, low, high, comp, mov);
+        /*int pi = partitionbib(texto, low, high);
 
         // Separately sort elements before
         // partition and after partition
-        quickSortbib(texto, low, pi - 1, comp, mov);
-        quickSortbib(texto, pi + 1, high, comp, mov);
+        quickSortbib(texto, low, pi - 1);
+        quickSortbib(texto, pi + 1, high);
     }
 }
 
-int partitionbib (TTexto* texto, int low, int high, int* comp, int* mov)
+int partitionbib (TTexto* texto, int low, int high)
 {
     int pivot = texto[high].numeroPalavras;
     //printf("=%d=",texto[high].numeroPalavras);    // pivot
@@ -158,19 +145,17 @@ int partitionbib (TTexto* texto, int low, int high, int* comp, int* mov)
         if (texto[j].numeroPalavras < pivot)
         {
             i++;    // increment index of smaller element
-            swapbib(&texto[i], &texto[j], mov);
-            *comp++;
+            swapbib(&texto[i], &texto[j]);
         }
     }
-    swapbib(&texto[i + 1], &texto[high],mov);
+    swapbib(&texto[i + 1], &texto[high]);
     return (i + 1);
 }
 
 
-void swapbib(TTexto* a, TTexto* b, int* mov)
+void swapbib(TTexto* a, TTexto* b)
 {
     TTexto t = *a;
     *a = *b;
     *b = t;
-    *mov += 2;
-}
+}*/

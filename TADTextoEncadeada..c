@@ -1,7 +1,6 @@
 #include "TADTexto.h"
 #include "TADPalavra.h"
-#include <time.h>
-void inicializaTexto(TTexto* texto, int TextoTamanho)
+/*void inicializaTexto(TTexto* texto, int TextoTamanho)
 {
     texto->palavras = (TPalavra*)malloc(TextoTamanho * sizeof(TPalavra));
     int x;
@@ -87,10 +86,7 @@ void tamanhoTexto(TTexto* texto)
 
 void ordenaPalavra(TTexto* texto)
 {
-    int comparacao = 0, movimentacao = 0; //Comparações e movimentação
-    clock_t Ticks[2];
-    Ticks[0] = clock();
-    Ticks[1] = clock();
+
     int i, j, min_idx;
     TPalavra temp;
     int n = texto->numeroPalavras;
@@ -106,19 +102,13 @@ void ordenaPalavra(TTexto* texto)
             //ver2 = arr[min_idx];
           if (texto->palavras[j].letras[0] < texto->palavras[min_idx].letras[0]){
             min_idx = j;
-            comparacao++;
           }
         }
 
         temp = texto->palavras[min_idx];
         texto->palavras[min_idx] = texto->palavras[i];
         texto->palavras[i] = temp;
-        movimentacao += 2;
     }
-    Ticks[1] = clock();
-    double Tempo = (Ticks[1] - Ticks[0]) * 1000.0 / CLOCKS_PER_SEC;
-    printf("Tempo total da CPU para organizar via selecao: %g ms\n", Tempo);
-    printf("Total de Comparacoes: %d, Total de Movimentacoes: %d\n", comparacao, movimentacao);
     return;
 }
 
@@ -130,7 +120,7 @@ void quickSort(TPalavra* palavra, int low, int high)
     {
         /* pi is partitioning index, palavra[p] is now
            at right place */
-        int pi = particao(palavra, low, high);
+        /*int pi = particao(palavra, low, high);
 
         // Separately sort elements before
         // partition and after partition
@@ -163,5 +153,5 @@ void troca(TPalavra* a, TPalavra* b)
     *a = *b;
     *b = t;
 }
-
+*/
 
