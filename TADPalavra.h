@@ -4,7 +4,7 @@
 #define MAXWORD 100
 
 typedef struct{
-    char* palavra;
+    char* letras;
     int tamanho;
 }TPalavra;
 

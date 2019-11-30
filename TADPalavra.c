@@ -1,14 +1,20 @@
 #include "TADPalavra.h"
 void inicializaPalavra(TPalavra* palavra)
 {
-    palavra->palavra = (char*)malloc(10 * sizeof(char));
-    palavra->palavra[0] = '\0';
+    palavra->letras = (char*)malloc(100 * sizeof(char));
+    int x;
     palavra->tamanho = 0;
 }
 void insereLetra(TPalavra* palavra, char letra)
 {
-    palavra->palavra[palavra->tamanho] = letra;
+    if(palavra->tamanho == MAXWORD - 1)
+    {
+        return;
+    }
+    palavra->letras[palavra->tamanho] = letra;
+    palavra->letras[palavra->tamanho+1] = '\0';
     palavra->tamanho++;
+    return;
 }
 
 void removeLetra(TPalavra* palavra, char letra)
@@ -19,7 +25,7 @@ void removeLetra(TPalavra* palavra, char letra)
     for(x = 0; x < palavra->tamanho; x++)
     {
        //ABCD / C -> ABD
-       if(palavra->palavra[x] == letra)
+       if(palavra->letras[x] == letra)
        {
            mover = 1;
        }
@@ -28,11 +34,11 @@ void removeLetra(TPalavra* palavra, char letra)
        {
            if(x == palavra->tamanho -1)
            {
-               palavra->palavra[x] = '\0';
+               palavra->letras[x] = '\0';
            }
            else
            {
-               palavra->palavra[x] = palavra->palavra[x+1];
+               palavra->letras[x] = palavra->letras[x+1];
            }
        }
     }
@@ -45,13 +51,13 @@ void removeLetraLoop(TPalavra* palavra)
     int z;
     for(z = 0; z < y; z++)
     {
-        removeLetra(palavra, palavra->palavra[0]);
+        removeLetra(palavra, palavra->letras[0]);
     }
 }
 
 void imprimePalavra(TPalavra palavra)
 {
-    printf("Palavra: %s\n", palavra.palavra);
+    printf("Palavra: %s\n", palavra.letras);
 }
 
 void tamanhoPalavra(TPalavra* palavra)

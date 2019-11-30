@@ -8,7 +8,7 @@
 
 typedef struct{
     int numeroPalavras;
-    TPalavra* texto;
+    TPalavra* palavras;
 }TTexto;
 
 typedef struct{

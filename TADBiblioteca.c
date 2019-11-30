@@ -1,7 +1,7 @@
 #include "TADTexto.h"
 #include "TADPalavra.h"
 #include "TADBiblioteca.h"
-void inicializaBiblioteca(TBiblioteca* Biblioteca, int TamanhoTextos,int TamanhoBib)
+/*void inicializaBiblioteca(TBiblioteca* Biblioteca, int TamanhoTextos,int TamanhoBib)
 {
     int x;
     //Biblioteca->textos = malloc(TamanhoBib * sizeof(TTexto));
@@ -18,7 +18,7 @@ void inicializaBiblioteca(TBiblioteca* Biblioteca, int TamanhoTextos,int Tamanho
     inicializaTexto(&Biblioteca->textos[6].texto, TamanhoTextos);
     inicializaTexto(&Biblioteca->textos[7].texto, TamanhoTextos);
     inicializaTexto(&Biblioteca->textos[8].texto, TamanhoTextos);
-    inicializaTexto(&Biblioteca->textos[9].texto, TamanhoTextos);*/
+    inicializaTexto(&Biblioteca->textos[9].texto, TamanhoTextos);
 
     Biblioteca->tamBiblioteca = 0;
 }
@@ -127,3 +127,4 @@ void ordenaTexto(TBiblioteca* Biblioteca)
         Biblioteca->textos[i] = temp;
     }
 }
+*/

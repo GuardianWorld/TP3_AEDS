@@ -13,11 +13,11 @@ int main()
     char inputLetra;
     input = -2;
     TPalavra word;
+    //TPalavra* mallocWordMaster;
     TTexto text;
     TBiblioteca bib;
     //inicializaPalavra(&word);
     srand((unsigned int)time(NULL));
-    memset(&word.palavra, '\0', MAXWORD);
 
     printf("|========================|\n");
     printf("|     Selecao de modo    |\n");
@@ -32,13 +32,13 @@ int main()
     {
     while(input != 99)
     {
-        #if WIN32
+        /*#if WIN32
         system("cls");
         #endif // WIN32
 
         #if __linux__
-        system("Clear");
-        #endif // __linux__
+        system("clear");
+        #endif // __linux__*/
         if(ordenaMenu == 0)
         {
         printf("|===========================|\n");
@@ -64,7 +64,7 @@ int main()
             {
                 removeLetraLoop(&word);
                 removePalavraLoop(&text);
-                removeTextoLoop(&bib);
+                //removeTextoLoop(&bib);
             }
             else
             {
@@ -74,7 +74,7 @@ int main()
                 scanf("%d", &input3);
                 inicializaPalavra(&word);
                 inicializaTexto(&text,input2);
-                inicializaBiblioteca(&bib,input2, input3);
+                //inicializaBiblioteca(&bib,input2, input3);
                 inicializado = 1;
             }
         }
@@ -119,7 +119,7 @@ int main()
             scanf("%d", &input2);
             printf("Insira o numero de letras da palavra: ");
             scanf("%d", &input3);
-            removeTextoLoop(&bib);
+            //removeTextoLoop(&bib);
             for(x = 0; x < input; x++) //Biblioteca
             {
                 removePalavraLoop(&text);
@@ -133,7 +133,7 @@ int main()
                     }
                     inserePalavra(&text, &word);
                 }
-                insereTexto(&bib, &text);
+                //insereTexto(&bib, &text);
             }
             input = -1;
 
@@ -148,7 +148,7 @@ int main()
         }
         else if(input == 6)
         {
-            removeTextoLoop(&bib);
+            //removeTextoLoop(&bib);
         }
         else if(input == 7)
         {
@@ -168,8 +168,8 @@ int main()
         else if(input == 9)
         {
             printf("Imprimindo Biblioteca\n");
-            imprimeBiblioteca(&bib);
-            tamanhoBiblioteca(&bib);
+            //imprimeBiblioteca(&bib);
+            //tamanhoBiblioteca(&bib);
             system("pause");
 
 
@@ -206,7 +206,7 @@ int main()
         }
         else if(input == 1)
         {
-            ordenaTexto(&bib);
+            //ordenaTexto(&bib);
         }
         else if(input == 2)
         {
@@ -227,8 +227,8 @@ int main()
         else if(input == 5)
         {
             printf("Imprimindo Biblioteca\n");
-            imprimeBiblioteca(&bib);
-            tamanhoBiblioteca(&bib);
+            //imprimeBiblioteca(&bib);
+            //tamanhoBiblioteca(&bib);
             system("pause");
         }
         else if(input == 10)

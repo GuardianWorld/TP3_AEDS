@@ -2,20 +2,18 @@
 #include "TADPalavra.h"
 void inicializaTexto(TTexto* texto, int TextoTamanho)
 {
-    char* aux;
-    texto->texto = (TPalavra*)malloc(TextoTamanho * sizeof(TPalavra));
-    int x,y;
-    for(x = 0; x < MAXTEXTO; x++)
+    texto->palavras = (TPalavra*)malloc(TextoTamanho * sizeof(TPalavra));
+    int x;
+    for(x = 0; x < TextoTamanho; x++)
     {
-        inicializaPalavra(texto->texto->palavra);
+        inicializaPalavra(&texto->palavras[x]);
     }
-    strcpy(texto->texto[0].palavra, "\0");
     texto->numeroPalavras = 0;
 }
 void inserePalavra(TTexto* texto, TPalavra* palavra)
 {
-    strcpy(texto->texto[texto->numeroPalavras].palavra , palavra->palavra);
-    texto->texto[texto->numeroPalavras].tamanho = palavra->tamanho;
+    strcpy(texto->palavras[texto->numeroPalavras].letras , palavra->letras);
+    texto->palavras[texto->numeroPalavras].tamanho = palavra->tamanho;
     texto->numeroPalavras++ ;
 }
 
@@ -35,13 +33,13 @@ void removePalavra(TTexto* texto, int pos)
        {
            if(x == texto->numeroPalavras-1)
            {
-               strcpy(texto->texto[x].palavra, "\0");
-               texto->texto[x].tamanho = 0;
+               strcpy(texto->palavras[x].letras, "\0");
+               texto->palavras[x].tamanho = 0;
            }
            else
            {
-               strcpy(texto->texto[x].palavra, texto->texto[x+1].palavra);
-               texto->texto[x].tamanho = texto->texto[x+1].tamanho;
+               strcpy(texto->palavras[x].letras, texto->palavras[x+1].letras);
+               texto->palavras[x].tamanho = texto->palavras[x+1].tamanho;
            }
        }
     }
@@ -68,7 +66,7 @@ void imprimeTexto(TTexto* texto)
     {
 
 
-        printf("%s ",texto->texto[y].palavra);
+        printf("%s ",texto->palavras[y].letras);
 
 
     }
@@ -96,13 +94,13 @@ void ordenaPalavra(TTexto* texto)
         for (j = i+1; j < n; j++){
             //ver1 = arrj[j];
             //ver2 = arr[min_idx];
-          if (texto->texto[j].palavra[0] < texto->texto[min_idx].palavra[0]){
+          if (texto->palavras[j].letras[0] < texto->palavras[min_idx].letras[0]){
             min_idx = j;
           }
         }
 
-        temp = texto->texto[min_idx];
-        texto->texto[min_idx] = texto->texto[i];
-        texto->texto[i] = temp;
+        temp = texto->palavras[min_idx];
+        texto->palavras[min_idx] = texto->palavras[i];
+        texto->palavras[i] = temp;
     }
 }
