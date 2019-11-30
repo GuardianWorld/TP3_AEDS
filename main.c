@@ -64,7 +64,7 @@ int main()
             {
                 removeLetraLoop(&word);
                 removePalavraLoop(&text);
-                //removeTextoLoop(&bib);
+                removeTextoLoop(&bib);
             }
             else
             {
@@ -74,14 +74,13 @@ int main()
                 scanf("%d", &input3);
                 inicializaPalavra(&word);
                 inicializaTexto(&text,input2);
-                //inicializaBiblioteca(&bib,input2, input3);
+                inicializaBiblioteca(&bib,input2, input3);
                 inicializado = 1;
             }
         }
         else if(input == 1)
         {
             printf("==Insira o numero de letras da palavra: ");
-            //getchar();
             scanf("%d", &input);
             removeLetraLoop(&word);
             for(x = 0; x < input; x++)
@@ -119,7 +118,7 @@ int main()
             scanf("%d", &input2);
             printf("Insira o numero de letras da palavra: ");
             scanf("%d", &input3);
-            //removeTextoLoop(&bib);
+            removeTextoLoop(&bib);
             for(x = 0; x < input; x++) //Biblioteca
             {
                 removePalavraLoop(&text);
@@ -133,7 +132,7 @@ int main()
                     }
                     inserePalavra(&text, &word);
                 }
-                //insereTexto(&bib, &text);
+                insereTexto(&bib, &text);
             }
             input = -1;
 
@@ -148,7 +147,7 @@ int main()
         }
         else if(input == 6)
         {
-            //removeTextoLoop(&bib);
+            removeTextoLoop(&bib);
         }
         else if(input == 7)
         {
@@ -168,8 +167,8 @@ int main()
         else if(input == 9)
         {
             printf("Imprimindo Biblioteca\n");
-            //imprimeBiblioteca(&bib);
-            //tamanhoBiblioteca(&bib);
+            imprimeBiblioteca(&bib);
+            tamanhoBiblioteca(&bib);
             system("pause");
 
 

@@ -1,25 +1,14 @@
 #include "TADTexto.h"
 #include "TADPalavra.h"
 #include "TADBiblioteca.h"
-/*void inicializaBiblioteca(TBiblioteca* Biblioteca, int TamanhoTextos,int TamanhoBib)
+void inicializaBiblioteca(TBiblioteca* Biblioteca, int TamanhoTextos,int TamanhoBib)
 {
     int x;
-    //Biblioteca->textos = malloc(TamanhoBib * sizeof(TTexto));
-    /*for(x = 0; x < TamanhoTextos; x++)
+    Biblioteca->textos = malloc(TamanhoBib * sizeof(TTexto));
+    for(x = 0; x < TamanhoBib; x++)
     {
-
-    }*/
-    /*inicializaTexto(&Biblioteca->textos[0].texto, TamanhoTextos);
-    inicializaTexto(&Biblioteca->textos[1].texto, TamanhoTextos);
-    inicializaTexto(&Biblioteca->textos[2].texto, TamanhoTextos);
-    inicializaTexto(&Biblioteca->textos[3].texto, TamanhoTextos);
-    inicializaTexto(&Biblioteca->textos[4].texto, TamanhoTextos);
-    inicializaTexto(&Biblioteca->textos[5].texto, TamanhoTextos);
-    inicializaTexto(&Biblioteca->textos[6].texto, TamanhoTextos);
-    inicializaTexto(&Biblioteca->textos[7].texto, TamanhoTextos);
-    inicializaTexto(&Biblioteca->textos[8].texto, TamanhoTextos);
-    inicializaTexto(&Biblioteca->textos[9].texto, TamanhoTextos);
-
+        inicializaTexto(&Biblioteca->textos[x], TamanhoTextos);
+    }
     Biblioteca->tamBiblioteca = 0;
 }
 void insereTexto(TBiblioteca* Biblioteca, TTexto* texto)
@@ -27,8 +16,8 @@ void insereTexto(TBiblioteca* Biblioteca, TTexto* texto)
     int x;
     for (x = 0; x < texto->numeroPalavras; x++)
     {
-        strcpy(Biblioteca->textos[Biblioteca->tamBiblioteca].texto[x].palavra, texto->texto[x].palavra);
-        Biblioteca->textos[Biblioteca->tamBiblioteca].texto[x].tamanho = texto->texto[x].tamanho;
+        strcpy(Biblioteca->textos[Biblioteca->tamBiblioteca].palavras[x].letras, texto->palavras[x].letras);
+        Biblioteca->textos[Biblioteca->tamBiblioteca].palavras[x].tamanho = texto->palavras[x].tamanho;
         Biblioteca->textos[Biblioteca->tamBiblioteca].numeroPalavras++;
     }
     Biblioteca->tamBiblioteca++;
@@ -53,9 +42,9 @@ void removeTexto(TBiblioteca* Biblioteca, int pos)
            {
                for(y = 0; y < Biblioteca->textos[x].numeroPalavras; y++)
                {
-                   strcpy(Biblioteca->textos[x].texto[y].palavra, "\0");
+                   strcpy(Biblioteca->textos[x].palavras[y].letras, "\0");
                }
-               Biblioteca->textos[x].texto[y].tamanho = 0;
+               Biblioteca->textos[x].palavras[y].tamanho = 0;
                Biblioteca->textos[x].numeroPalavras = 0;
            }
            else
@@ -90,7 +79,7 @@ void imprimeBiblioteca(TBiblioteca* Biblioteca)
         printf("\nImprimindo texto: %d\n\n",z+1);
         for(y = 0; y < Biblioteca->textos[z].numeroPalavras; y++)
         {
-            printf("%s ",Biblioteca->textos[z].texto[y].palavra);
+            printf("%s ",Biblioteca->textos[z].palavras[y].letras);
         }
     }
     printf("\n");
@@ -101,7 +90,7 @@ void tamanhoBiblioteca(TBiblioteca* Biblioteca)
 }
 
 
-void ordenaTexto(TBiblioteca* Biblioteca)
+/*void ordenaTexto(TBiblioteca* Biblioteca)
 {
 
     int i, j, min_idx;
@@ -126,5 +115,5 @@ void ordenaTexto(TBiblioteca* Biblioteca)
         Biblioteca->textos[min_idx] = Biblioteca->textos[i];
         Biblioteca->textos[i] = temp;
     }
-}
-*/
+}*/
+
