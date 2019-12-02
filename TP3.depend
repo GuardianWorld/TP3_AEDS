@@ -10,7 +10,7 @@
 	"TADPalavra.h"
 	<time.h>
 
-1575308364 source:e:\arquivos de programas\c projects\tp3\main.c
+1575317726 source:e:\arquivos de programas\c projects\tp3\main.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
@@ -40,7 +40,7 @@
 1575270546 source:e:\arquivos de programas\c projects\tp3\tadbibliotecaencadeada.c
 	"TADBibliotecaEncadeada.h"
 
-1575261977 source:e:\arquivos de programas\c projects\tp3\tadpalavraencadeada.c
+1575317669 source:e:\arquivos de programas\c projects\tp3\tadpalavraencadeada.c
 	"TADPalavraEncadeada.h"
 
 1575136721 source:e:\arquivos de programas\c projects\tp3\tadtextoencadeada..c
@@ -63,13 +63,14 @@
 	<stdlib.h>
 	<stdio.h>
 
-1575310587 e:\arquivos de programas\c projects\tp3\tadtextoencadeada.h
+1575316994 e:\arquivos de programas\c projects\tp3\tadtextoencadeada.h
 	<string.h>
 	<stdlib.h>
 	<stdio.h>
+	<time.h>
 	"TADPalavraEncadeada.h"
 
-1575313502 source:e:\arquivos de programas\c projects\tp3\tadtextoencadeada.c
+1575318115 source:e:\arquivos de programas\c projects\tp3\tadtextoencadeada.c
 	"TADTextoEncadeada.h"
 	"TADPalavraEncadeada.h"
 

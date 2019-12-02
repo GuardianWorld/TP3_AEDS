@@ -3,12 +3,13 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <time.h>
 #define MAXTEXTO 50000
 #include "TADPalavraEncadeada.h"
 typedef struct TextoEncadeado* apontadorTexto;
 typedef struct TextoEncadeado{
     struct TextoEncadeado* ProxPalavra;
-    TPalavraEncadeada palavra;
+    TlistaPalavra palavra;
 }TTextoEncadeada;
 
 typedef struct listaTXT{

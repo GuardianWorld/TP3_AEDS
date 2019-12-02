@@ -65,7 +65,7 @@ void imprimePalavraEncadeada(TlistaPalavra* lista)
         printf("%c", pAux->letra);
         pAux = pAux->ProxLetra; /* próxima célula */
     }
-    printf("\n");
+    //printf("\n");
     return;
 }
 

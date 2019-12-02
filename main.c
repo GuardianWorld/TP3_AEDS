@@ -366,6 +366,10 @@ int main()
         {
             printf("Imprimindo Palavra\n");
             imprimePalavraEncadeada(&eword);
+            if(eword.tamanho != 0)
+            {
+                printf("\n");
+            }
             tamanhoPalavraEncadeada(&eword);
             system("pause");
         }

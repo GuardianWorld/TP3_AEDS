@@ -58,7 +58,6 @@ void removePalavraLoopEncadeado(TListaTexto* listaTextos)
 void imprimeTextoEncadeado(TListaTexto* listaTextos)
 {
     apontadorTexto pAux;
-    apontadorLetra pAuxLetra;
 
     if(listaTextos->numeroPalavras == 0)
     {
@@ -66,18 +65,9 @@ void imprimeTextoEncadeado(TListaTexto* listaTextos)
     }
 
     pAux = listaTextos->pPrimeiro->ProxPalavra;
-    pAuxLetra = pAux->palavra.ProxLetra;
     while(pAux != NULL)
     {
-        if(pAux->palavra.ProxLetra->ProxLetra != NULL)
-        {
-            pAuxLetra = pAux->palavra.ProxLetra->ProxLetra;
-        }
-        while (pAuxLetra != NULL)
-        {
-            printf("%c", pAuxLetra->letra);
-            pAuxLetra = pAuxLetra->ProxLetra;
-        }
+        imprimePalavraEncadeada(&pAux->palavra);
         printf(" ");
         pAux = pAux->ProxPalavra;
     }
@@ -94,34 +84,24 @@ void tamanhoTextoEncadeado(TListaTexto* listaTextos)
 
 void ordenaPalavraEncadeada(TListaTexto* texto)
 {
+    if(texto->numeroPalavras == 0)
+    {
+        printf("Tempo total da CPU para organizar via selecao: 0 ms\n");
+        printf("Total de Comparacoes: 0, Total de Movimentacoes: 0\n");
+        return;
+    }
     //
     int comparacao = 0, movimentacao = 0; //Comparações e movimentação
     clock_t Ticks[2];
     Ticks[0] = clock();
     Ticks[1] = clock();
     //
-    int i, j, min_idx;
-    apontadorTexto temp;
-    int n = texto->numeroPalavras;
+    TlistaPalavra* aa = &texto->pPrimeiro->ProxPalavra->palavra;
+    printf("%c\n",aa->pPrimeiro->ProxLetra->letra);
 
-    // One by one move boundary of unsorted subarray
-    for (i = 0; i < n-1; i++)
-    {
-        // Find the minimum element in unsorted array
-        min_idx = i;
-        for (j = i+1; j < n; j++){
-            //ver1 = arrj[j];
-            //ver2 = arr[min_idx];
-          if (texto->palavras[j].letras[0] < texto->palavras[min_idx].letras[0]){
-            min_idx = j;
-            comparacao++;
-          }
-        }
-        temp = texto->palavras[min_idx];
-        texto->palavras[min_idx] = texto->palavras[i];
-        texto->palavras[i] = temp;
-        movimentacao += 2;
-    }
+
+
+    //
     Ticks[1] = clock();
     double Tempo = (Ticks[1] - Ticks[0]) * 1000.0 / CLOCKS_PER_SEC;
     printf("Tempo total da CPU para organizar via selecao: %g ms\n", Tempo);
