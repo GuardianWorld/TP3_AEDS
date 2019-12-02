@@ -1,34 +1,33 @@
-#ifndef TADBIBLIOTECA_H_INCLUDED
-#define TADBIBLIOTECA_H_INCLUDED
+#ifndef TADBIBLIOTECAE_H_INCLUDED
+#define TADBIBLIOTECAE_H_INCLUDED
+#include "TADTextoEncadeada.h"
+#include "TADPalavraEncadeada.h"
 #include <stdlib.h>
 #include <stdio.h>
-/*typedef struct{
-    TTexto* textos;
-    int tamBiblioteca;
-}TBiblioteca;
 
-typedef struct{
-    char* ProxPalavra;
-    TPalavra palavra;
+typedef struct BibEncadeado* apontadorBib;
+typedef struct BibEncadeado{
+    struct BibEncadeado* ProxTexto;
+    TListaTexto Texto;
 }TBibliotecaEncadeada;
 
 typedef struct{
-    char* pPrimeiro;
-    char* pUltimo;
-    int numeroPalavras;
+    struct BibEncadeado* pPrimeiro;
+    struct BibEncadeado* pUltimo;
+    int tamanhoBib;
 }TListaBiblioteca;
 
-void inicializaBiblioteca(TBiblioteca* Biblioteca, int TamanhoTextos,int TamanhoBib);
-void insereTexto(TBiblioteca* Biblioteca, TTexto* texto);
-void removeTexto(TBiblioteca* Biblioteca, int pos);
-void removeTextoLoop(TBiblioteca* Biblioteca);
-void imprimeBiblioteca(TBiblioteca* Biblioteca);
-void tamanhoBiblioteca(TBiblioteca* Biblioteca);
-void ordenaTexto(TBiblioteca* Biblioteca);
+void inicializaBibliotecaEncadeada(TListaBiblioteca* listaBib);
+void insereTextoEncadeado(TListaBiblioteca* listaBib, int tamanhoTexto, int tamanhoPalavra);
+void removeTextoEncadeado(TListaBiblioteca* listaBib);
+void removeTextoLoopEncadeado(TListaBiblioteca* listaBib);
+void imprimeBibliotecaEncadeado(TListaBiblioteca* listaBib);
+void tamanhoBibliotecaEncadeado(TListaBiblioteca* listaBib);
+/*void ordenaTexto(TBiblioteca* Biblioteca);
 
 int partitionbib (TTexto* arr, int low, int high);
 void swapbib(TTexto* a, TTexto* b);
 
 void quickSortbib(TTexto* arr, int low, int high);
 */
-#endif // TTADBIBLIOTECA_H_INCLUDED
+#endif // TTADBIBLIOTECAE_H_INCLUDED

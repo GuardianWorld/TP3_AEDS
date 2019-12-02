@@ -9,7 +9,7 @@ void inicializaTextoEncadeado(TListaTexto* listaTextos)
     return;
 }
 
-void inserePalavraEncadeado(TListaTexto* listaTextos, TlistaPalavra* palavra, int tamanhoPalavra)
+void inserePalavraEncadeado(TListaTexto* listaTextos, int tamanhoPalavra)
 {
     int y;
     char inputLetra;
@@ -39,7 +39,7 @@ void removePalavraEncadeado(TListaTexto* listaTextos)
     listaTextos->pPrimeiro = listaTextos->pPrimeiro->ProxPalavra;
     removeLetraLoopEncadeada(&listaTextos->pPrimeiro->palavra);
     free(pAuxTexto);
-    printf("%d\n", listaTextos->numeroPalavras);
+    //printf("%d\n", listaTextos->numeroPalavras);
     listaTextos->numeroPalavras--;
     return;
 }

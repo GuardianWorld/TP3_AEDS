@@ -1,6 +1,5 @@
 #ifndef TADTEXTOE_H_INCLUDED
 #define TADTEXTOE_H_INCLUDED
-#include "TADPalavra.h"
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -12,14 +11,14 @@ typedef struct TextoEncadeado{
     TPalavraEncadeada palavra;
 }TTextoEncadeada;
 
-typedef struct{
+typedef struct listaTXT{
     struct TextoEncadeado* pPrimeiro;
     struct TextoEncadeado* pUltimo;
     int numeroPalavras;
 }TListaTexto;
 
 void inicializaTextoEncadeado(TListaTexto* listaTextos);
-void inserePalavraEncadeado(TListaTexto* listaTextos, TlistaPalavra* palavra, int tamanhoPalavra);
+void inserePalavraEncadeado(TListaTexto* listaTextos, int tamanhoPalavra);
 void removePalavraEncadeado(TListaTexto* listaTextos);
 void removePalavraLoopEncadeado(TListaTexto* listaTextos);
 void imprimeTextoEncadeado(TListaTexto* listaTextos);
