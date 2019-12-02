@@ -24,6 +24,7 @@ int main()
     TBiblioteca bib;
     //Encadeada
     TlistaPalavra eword;
+    TListaTexto etext;
     srand((unsigned int)time(NULL));
 
     printf(" |========================|\n");
@@ -307,7 +308,7 @@ int main()
                 //printf("Digite o tamanho maximo de cada Biblioteca: ");
                 //scanf("%d", &input3);
                 inicializaPalavraEncadeada(&eword);
-                //inicializaTexto(&text,input2);
+                inicializaTextoEncadeado(&etext);
                 //inicializaBiblioteca(&bib,input2, input3);
                 inicializado = 1;
             }
@@ -325,7 +326,18 @@ int main()
         }
         else if(input == 2)
         {
+            printf("Insira o numero de palavras do texto: ");
+            scanf("%d", &input);
+            printf("Insira o numero de letras da palavra: ");
+            scanf("%d", &input2);
+            //removePalavraLoopEncadeado(&eword);
 
+            for(x = 0; x < input; x++)
+            {
+                removeLetraLoopEncadeada(&eword);
+                inserePalavraEncadeado(&etext, &eword, input2);
+            }
+            input = -1;
         }
         else if(input == 3)
         {
@@ -338,7 +350,7 @@ int main()
         }
         else if(input == 5)
         {
-            //removePalavraLoop(&text);
+            removePalavraLoopEncadeado(&etext);
         }
         else if(input == 6)
         {
@@ -353,10 +365,10 @@ int main()
         }
         else if(input == 8)
         {
-            //printf("Imprimindo Texto\n");
-            //imprimeTexto(&text);
-            //tamanhoTexto(&text);
-            //system("pause");
+            printf("Imprimindo Texto\n");
+            imprimeTextoEncadeado(&etext);
+            tamanhoTextoEncadeado(&etext);
+            system("pause");
 
         }
         else if(input == 9)

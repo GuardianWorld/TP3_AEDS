@@ -109,7 +109,6 @@ void ordenaPalavra(TTexto* texto)
             comparacao++;
           }
         }
-
         temp = texto->palavras[min_idx];
         texto->palavras[min_idx] = texto->palavras[i];
         texto->palavras[i] = temp;

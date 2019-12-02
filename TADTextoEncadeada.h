@@ -1,34 +1,34 @@
-#ifndef TADTEXTO_H_INCLUDED
-#define TADTEXTO_H_INCLUDED
+#ifndef TADTEXTOE_H_INCLUDED
+#define TADTEXTOE_H_INCLUDED
 #include "TADPalavra.h"
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
 #define MAXTEXTO 50000
-
+#include "TADPalavraEncadeada.h"
 typedef struct TextoEncadeado* apontadorTexto;
 typedef struct TextoEncadeado{
-    apontadorTexto* ProxPalavra;
+    struct TextoEncadeado* ProxPalavra;
     TPalavraEncadeada palavra;
 }TTextoEncadeada;
 
 typedef struct{
-    apontadorTexto* pPrimeiro;
-    apontadorTexto* pUltimo;
+    struct TextoEncadeado* pPrimeiro;
+    struct TextoEncadeado* pUltimo;
     int numeroPalavras;
 }TListaTexto;
 
-void inicializaTextoEncadeado(TTextoEncadeada* texto, int TextoTamanho);
-void inserePalavraEncadeado(TTextoEncadeada* texto, TPalavra* palavra);
-void removePalavraEncadeado(TTextoEncadeada* texto, int pos);
-void removePalavraLoopEncadeado(TTextoEncadeada* texto);
-void imprimeTextoEncadeado(TTextoEncadeada* texto);
-void tamanhoTextoEncadeado(TTextoEncadeada* texto);
+void inicializaTextoEncadeado(TListaTexto* listaTextos);
+void inserePalavraEncadeado(TListaTexto* listaTextos, TlistaPalavra* palavra, int tamanhoPalavra);
+void removePalavraEncadeado(TListaTexto* listaTextos);
+void removePalavraLoopEncadeado(TListaTexto* listaTextos);
+void imprimeTextoEncadeado(TListaTexto* listaTextos);
+void tamanhoTextoEncadeado(TListaTexto* listaTextos);
 
-void ordenaPalavraEncadeado(TTextoEncadeada* texto);
+//void ordenaPalavraEncadeado(TListaTexto* texto);
 
-int particaoEncadeado (TPalavraEncadeada* arr, int low, int high);
-void trocaEncadeado(TPalavraEncadeada* a, TPalavra* b);
-void quickSortEncadeado (TPalavraEncadeada* arr, int low, int high);
+//int particaoEncadeado (TPalavraEncadeada* arr, int low, int high);
+//void trocaEncadeado(TPalavraEncadeada* a, TPalavra* b);
+//void quickSortEncadeado (TPalavraEncadeada* arr, int low, int high);
 
-#endif // TADTEXTO_H_INCLUDED
+#endif // TADTEXTOE_H_INCLUDED

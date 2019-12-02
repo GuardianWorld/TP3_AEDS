@@ -1,6 +1,5 @@
 #include "TADPalavraEncadeada.h"
 
-
 void inicializaPalavraEncadeada(TlistaPalavra* listaLetras)
 {
     listaLetras->pPrimeiro = malloc(sizeof(TPalavraEncadeada));
@@ -12,10 +11,6 @@ void inicializaPalavraEncadeada(TlistaPalavra* listaLetras)
 
 void insereLetraEncadeada(TlistaPalavra* listaLetras, char letra)
 {
-    if(listaLetras->tamanho == MAXWORD - 1)
-    {
-        return;
-    }
     listaLetras->pUltimo->ProxLetra = (apontadorLetra) malloc(sizeof(TPalavraEncadeada));
     listaLetras->pUltimo = listaLetras->pUltimo->ProxLetra;
     listaLetras->pUltimo->letra = letra;
@@ -30,12 +25,18 @@ void removeLetraEncadeada(TlistaPalavra* listaLetras)
     int x;
     if (listaLetras->tamanho == 0)
     {
-         return;
+        return;
     }
-    pAux = listaLetras->pPrimeiro;
-    listaLetras->pPrimeiro = listaLetras->pPrimeiro->ProxLetra;
+    pAux = listaLetras->pPrimeiro->ProxLetra;
+    listaLetras->pPrimeiro->ProxLetra = listaLetras->pPrimeiro->ProxLetra->ProxLetra;
+    //printf("%c\n", pAux->letra);
     free(pAux);
     listaLetras->tamanho--;
+    if(listaLetras->tamanho == 0)
+    {
+        listaLetras->pUltimo = listaLetras->pPrimeiro;
+        listaLetras->pPrimeiro->ProxLetra = NULL;
+    }
     return;
 }
 
@@ -53,6 +54,11 @@ void removeLetraLoopEncadeada(TlistaPalavra* listaLetras)
 void imprimePalavraEncadeada(TlistaPalavra* lista)
 {
     apontadorLetra pAux;
+    if(lista->tamanho == 0)
+    {
+        return;
+    }
+
     pAux = lista->pPrimeiro->ProxLetra;
     while (pAux != NULL)
     {
