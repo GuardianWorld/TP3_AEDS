@@ -1,35 +1,75 @@
 # depslib dependency file v1.0
-1574991430 source:e:\arquivos de programas\c projects\tp3\tadbiblioteca.c
+1575139483 source:e:\arquivos de programas\c projects\tp3\tadbiblioteca.c
 	"TADTexto.h"
 	"TADPalavra.h"
 	"TADBiblioteca.h"
+	<time.h>
 
-1574989540 source:e:\arquivos de programas\c projects\tp3\tadtexto.c
+1575246955 source:e:\arquivos de programas\c projects\tp3\tadtexto.c
 	"TADTexto.h"
 	"TADPalavra.h"
+	<time.h>
 
-1574990937 source:e:\arquivos de programas\c projects\tp3\main.c
+1575308364 source:e:\arquivos de programas\c projects\tp3\main.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
 	"TADPalavra.h"
 	"TADTexto.h"
 	"TADBiblioteca.h"
+	"TADBibliotecaEncadeada.h"
+	"TADPalavraEncadeada.h"
+	"TADTextoEncadeada.h"
 
-1574904899 e:\arquivos de programas\c projects\tp3\tadpalavra.h
+1575136187 e:\arquivos de programas\c projects\tp3\tadpalavra.h
 	"string.h"
 
-1574990202 e:\arquivos de programas\c projects\tp3\tadtexto.h
+1575136151 e:\arquivos de programas\c projects\tp3\tadtexto.h
 	"TADPalavra.h"
 	<string.h>
 	<stdlib.h>
 	<stdio.h>
 
-1574990212 e:\arquivos de programas\c projects\tp3\tadbiblioteca.h
+1575139519 e:\arquivos de programas\c projects\tp3\tadbiblioteca.h
 	<stdlib.h>
 	<stdio.h>
-	"TADTexto.h"
 
-1574990508 source:e:\arquivos de programas\c projects\tp3\tadpalavra.c
+1575133130 source:e:\arquivos de programas\c projects\tp3\tadpalavra.c
 	"TADPalavra.h"
+
+1575270546 source:e:\arquivos de programas\c projects\tp3\tadbibliotecaencadeada.c
+	"TADBibliotecaEncadeada.h"
+
+1575261977 source:e:\arquivos de programas\c projects\tp3\tadpalavraencadeada.c
+	"TADPalavraEncadeada.h"
+
+1575136721 source:e:\arquivos de programas\c projects\tp3\tadtextoencadeada..c
+	"TADTexto.h"
+	"TADPalavra.h"
+
+1575270078 e:\arquivos de programas\c projects\tp3\tadbibliotecaencadeada.h
+	"TADTextoEncadeada.h"
+	"TADPalavraEncadeada.h"
+	<stdlib.h>
+	<stdio.h>
+
+1575142528 e:\arquivos de programas\c projects\tp3\tadpalavraencadeada.h
+	"string.h"
+	<stdlib.h>
+
+1575140294 e:\arquivos de programas\c projects\tp3\tadtextoencadeada..h
+	"TADPalavra.h"
+	<string.h>
+	<stdlib.h>
+	<stdio.h>
+
+1575310587 e:\arquivos de programas\c projects\tp3\tadtextoencadeada.h
+	<string.h>
+	<stdlib.h>
+	<stdio.h>
+	"TADPalavraEncadeada.h"
+
+1575313502 source:e:\arquivos de programas\c projects\tp3\tadtextoencadeada.c
+	"TADTextoEncadeada.h"
+	"TADPalavraEncadeada.h"
 

@@ -91,14 +91,18 @@ void tamanhoTextoEncadeado(TListaTexto* listaTextos)
     return;
 }
 
-/*
-void ordenaPalavra(TTexto* texto)
-{
 
+void ordenaPalavraEncadeada(TListaTexto* texto)
+{
+    //
+    int comparacao = 0, movimentacao = 0; //Comparações e movimentação
+    clock_t Ticks[2];
+    Ticks[0] = clock();
+    Ticks[1] = clock();
+    //
     int i, j, min_idx;
-    TPalavra temp;
+    apontadorTexto temp;
     int n = texto->numeroPalavras;
-    //int ver1,ver2
 
     // One by one move boundary of unsorted subarray
     for (i = 0; i < n-1; i++)
@@ -110,18 +114,23 @@ void ordenaPalavra(TTexto* texto)
             //ver2 = arr[min_idx];
           if (texto->palavras[j].letras[0] < texto->palavras[min_idx].letras[0]){
             min_idx = j;
+            comparacao++;
           }
         }
-
         temp = texto->palavras[min_idx];
         texto->palavras[min_idx] = texto->palavras[i];
         texto->palavras[i] = temp;
+        movimentacao += 2;
     }
+    Ticks[1] = clock();
+    double Tempo = (Ticks[1] - Ticks[0]) * 1000.0 / CLOCKS_PER_SEC;
+    printf("Tempo total da CPU para organizar via selecao: %g ms\n", Tempo);
+    printf("Total de Comparacoes: %d, Total de Movimentacoes: %d\n", comparacao, movimentacao);
     return;
 }
 
 //Quicksort Texto
-
+/*
 void quickSort(TPalavra* palavra, int low, int high)
 {
     if (low < high)

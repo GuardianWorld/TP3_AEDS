@@ -24,7 +24,7 @@ void removePalavraLoopEncadeado(TListaTexto* listaTextos);
 void imprimeTextoEncadeado(TListaTexto* listaTextos);
 void tamanhoTextoEncadeado(TListaTexto* listaTextos);
 
-//void ordenaPalavraEncadeado(TListaTexto* texto);
+void ordenaPalavraEncadeada(TListaTexto* texto);
 
 //int particaoEncadeado (TPalavraEncadeada* arr, int low, int high);
 //void trocaEncadeado(TPalavraEncadeada* a, TPalavra* b);

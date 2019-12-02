@@ -35,14 +35,26 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="TADBiblioteca.h" />
+		<Unit filename="TADBibliotecaEncadeada.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="TADBibliotecaEncadeada.h" />
 		<Unit filename="TADPalavra.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="TADPalavra.h" />
+		<Unit filename="TADPalavraEncadeada.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="TADPalavraEncadeada.h" />
 		<Unit filename="TADTexto.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="TADTexto.h" />
+		<Unit filename="TADTextoEncadeada.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="TADTextoEncadeada.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>

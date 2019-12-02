@@ -126,20 +126,18 @@ int main()
             scanf("%d", &input2);
             printf("Insira o numero de letras da palavra: ");
             scanf("%d", &input3);
-
-            if(input2 == 100000)
-            {
-                random = input2 - rand() % 50001;
-            }
-            else
-            {
-                random = input2 - rand() % input2;
-            }
-
             removeTextoLoop(&bib);
             for(x = 0; x < input; x++) //Biblioteca
             {
                 removePalavraLoop(&text);
+                if(input2 == 100000)
+                {
+                    random = input2 - rand() % 50001;
+                }
+                else
+                {
+                    random = input2 - rand() % input2;
+                }
                 for(y = 0; y < random ; y++) //Texto
                 {
                     removeLetraLoop(&word);
@@ -234,6 +232,8 @@ int main()
         {
             int n = bib.tamBiblioteca;
             Ticks[0] = clock();
+            x = 0;
+            y = 0;
             quickSortbib(bib.textos, 0 , n-1, &x, &y);
             Ticks[1] = clock();
             double Tempo = (Ticks[1] - Ticks[0]) * 1000.0 / CLOCKS_PER_SEC;
@@ -411,6 +411,10 @@ int main()
 
         scanf("%d", &input);
 
+        if(input == 0)
+        {
+            ordenaPalavraEncadeada(&etext);
+        }
         if(input == 10)
         {
             ordenaMenu = 0;

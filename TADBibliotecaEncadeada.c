@@ -1,95 +1,114 @@
-#include "TADTexto.h"
-#include "TADPalavra.h"
-#include "TADBiblioteca.h"
-/*void inicializaBiblioteca(TBiblioteca* Biblioteca, int TamanhoTextos,int TamanhoBib)
+#include "TADBibliotecaEncadeada.h"
+void inicializaBibliotecaEncadeada(TListaBiblioteca* listaBib)
 {
+    listaBib->pPrimeiro = malloc(sizeof(TBibliotecaEncadeada));
+    listaBib->pUltimo = listaBib->pPrimeiro;
+    listaBib->pPrimeiro->ProxTexto = NULL;
+    listaBib->tamanhoBib = 0;
+    return;
+}
+
+void insereTextoEncadeado(TListaBiblioteca* listaBib, int tamanhoTexto, int tamanhoPalavra)
+{
+    int y;
     int x;
-    Biblioteca->textos = malloc(TamanhoBib * sizeof(TTexto));
-    for(x = 0; x < TamanhoBib; x++)
+    int trandom;
+    char inputLetra;
+    listaBib->pUltimo->ProxTexto = (apontadorBib) malloc(sizeof(TBibliotecaEncadeada));
+    listaBib->pUltimo = listaBib->pUltimo->ProxTexto;
+    listaBib->pUltimo->ProxTexto = NULL;
+    inicializaTextoEncadeado(&listaBib->pUltimo->Texto);
+    //inicializaPalavraEncadeada(&listaBib->pUltimo->Texto.pUltimo->palavra);
+    if(tamanhoTexto == 100000)
     {
-        inicializaTexto(&Biblioteca->textos[x], TamanhoTextos);
+        trandom = tamanhoTexto - rand() % 50001;
     }
-    Biblioteca->tamBiblioteca = 0;
+    else
+    {
+        trandom = tamanhoTexto - rand() % tamanhoTexto;
+    }
+
+    for(x = 0; x < trandom; x++)
+    {
+        inserePalavraEncadeado(&listaBib->pUltimo->Texto, tamanhoPalavra);
+    }
+    listaBib->tamanhoBib++;
+    return;
 }
-void insereTexto(TBiblioteca* Biblioteca, TTexto* texto)
+
+void removeTextoEncadeado(TListaBiblioteca* listaBib)
 {
+    apontadorBib pAux;
+    struct listaTXT* pAuxTexto;
     int x;
-    for (x = 0; x < texto->numeroPalavras; x++)
+    if (listaBib->tamanhoBib == 0)
     {
-        strcpy(Biblioteca->textos[Biblioteca->tamBiblioteca].palavras[x].letras, texto->palavras[x].letras);
-        Biblioteca->textos[Biblioteca->tamBiblioteca].palavras[x].tamanho = texto->palavras[x].tamanho;
-        Biblioteca->textos[Biblioteca->tamBiblioteca].numeroPalavras++;
+         return;
     }
-    Biblioteca->tamBiblioteca++;
-    //system("Pause");
-}
-
-void removeTexto(TBiblioteca* Biblioteca, int pos)
-{
-    int x, y;
-    int mover = 0;
-    for(x = 0; x < Biblioteca->tamBiblioteca; x++)
-    {
-       //ABCD / C -> ABD
-       if(x == pos)
-       {
-           mover = 1;
-       }
-
-       if(mover != 0)
-       {
-           if(x == Biblioteca->tamBiblioteca-1)
-           {
-               for(y = 0; y < Biblioteca->textos[x].numeroPalavras; y++)
-               {
-                   strcpy(Biblioteca->textos[x].palavras[y].letras, "\0");
-               }
-               Biblioteca->textos[x].palavras[y].tamanho = 0;
-               Biblioteca->textos[x].numeroPalavras = 0;
-           }
-           else
-           {
-               Biblioteca->textos[x] = Biblioteca->textos[x+1];
-               Biblioteca->textos[x].numeroPalavras = Biblioteca->textos[x+1].numeroPalavras;
-           }
-       }
-    }
-    //system("pause");
-    Biblioteca->tamBiblioteca--;
+    pAux = listaBib->pPrimeiro;
+    listaBib->pPrimeiro = listaBib->pPrimeiro->ProxTexto;
+    removePalavraLoopEncadeado(&listaBib->pPrimeiro->Texto);
+    free(pAux);
+    //printf("%d\n", listaTextos->numeroPalavras);
+    listaBib->tamanhoBib--;
+    return;
 
 }
 
-void removeTextoLoop(TBiblioteca* Biblioteca)
+void removeTextoLoopEncadeado(TListaBiblioteca* listaBib)
 {
-    int x;
-    int local = Biblioteca->tamBiblioteca;
-    for(x = 0; x < local; x++)
+    int x = listaBib->tamanhoBib;
+    int y;
+    for(y = 0; y < x; y++)
     {
-        removeTexto(Biblioteca, 0);
+        removeTextoEncadeado(listaBib);
     }
-
+    return;
 }
 
-void imprimeBiblioteca(TBiblioteca* Biblioteca)
+void imprimeBibliotecaEncadeado(TListaBiblioteca* listaBib)
 {
-    int y,z;
+    apontadorBib pAuxBib;
+    struct listaTXT* pAuxTexto;
 
+    int y = 1;
+    if(listaBib->tamanhoBib == 0)
+    {
+        return;
+    }
 
-    for(z = 0; z < Biblioteca->tamBiblioteca; z++){
-        printf("\nImprimindo texto: %d\n\n",z+1);
-        for(y = 0; y < Biblioteca->textos[z].numeroPalavras; y++)
+    pAuxBib = listaBib->pPrimeiro->ProxTexto;
+    pAuxTexto = &pAuxBib->Texto;
+    while(pAuxBib != NULL)
+    {
+        printf("Imprimindo texto %d\n", y);
+        imprimeTextoEncadeado(pAuxTexto);
+        pAuxBib = pAuxBib->ProxTexto;
+        pAuxTexto = &pAuxBib->Texto;
+        y++;
+        printf("\n");
+        /*if(pAux->palavra.ProxLetra->ProxLetra != NULL)
         {
-            printf("%s ",Biblioteca->textos[z].palavras[y].letras);
+            pAuxLetra = pAux->palavra.ProxLetra->ProxLetra;
         }
+        while (pAuxLetra != NULL)
+        {
+            printf("%c", pAuxLetra->letra);
+            pAuxLetra = pAuxLetra->ProxLetra;
+        }
+        printf(" ");
+        pAux = pAux->ProxPalavra;*/
     }
     printf("\n");
+    return;
 }
-void tamanhoBiblioteca(TBiblioteca* Biblioteca)
+
+void tamanhoBibliotecaEncadeado(TListaBiblioteca* listaBib)
 {
-    printf("Tamanho da Biblioteca: %d\n", Biblioteca->tamBiblioteca);
+    printf("Tamanho da Biblioteca: %d\n", listaBib->tamanhoBib);
 }
 
-
+/*
 void ordenaTexto(TBiblioteca* Biblioteca){
 
     int i, j, min_idx;
