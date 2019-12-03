@@ -9,8 +9,12 @@ void inicializaPalavraEncadeada(TlistaPalavra* listaLetras)
     return;
 }
 
+int inf = 0;
+
 void insereLetraEncadeada(TlistaPalavra* listaLetras, char letra)
 {
+    //inf++;
+    //printf("\n%c %d\n", letra,inf);
     listaLetras->pUltimo->ProxLetra = (apontadorLetra) malloc(sizeof(TPalavraEncadeada));
     listaLetras->pUltimo = listaLetras->pUltimo->ProxLetra;
     listaLetras->pUltimo->letra = letra;
@@ -62,7 +66,7 @@ void imprimePalavraEncadeada(TlistaPalavra* lista)
     pAux = lista->pPrimeiro->ProxLetra;
     while (pAux != NULL)
     {
-        printf("%c", pAux->letra);
+        //printf("%c", pAux->letra);
         pAux = pAux->ProxLetra; /* próxima célula */
     }
     //printf("\n");

@@ -9,6 +9,7 @@
 typedef struct TextoEncadeado* apontadorTexto;
 typedef struct TextoEncadeado{
     struct TextoEncadeado* ProxPalavra;
+    struct TextoEncadead* AntPalavra;
     TlistaPalavra palavra;
 }TTextoEncadeada;
 
@@ -25,7 +26,7 @@ void removePalavraLoopEncadeado(TListaTexto* listaTextos);
 void imprimeTextoEncadeado(TListaTexto* listaTextos);
 void tamanhoTextoEncadeado(TListaTexto* listaTextos);
 
-void ordenaPalavraEncadeada(TListaTexto* texto);
+void ordenaPalavraEncadeada(TListaTexto texto);
 
 //int particaoEncadeado (TPalavraEncadeada* arr, int low, int high);
 //void trocaEncadeado(TPalavraEncadeada* a, TPalavra* b);

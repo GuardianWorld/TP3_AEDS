@@ -19,11 +19,13 @@ void inserePalavraEncadeado(TListaTexto* listaTextos, int tamanhoPalavra)
     listaTextos->pUltimo->ProxPalavra->AntPalavra = listaTextos->pUltimo;
     listaTextos->pUltimo = listaTextos->pUltimo->ProxPalavra;
     listaTextos->pUltimo->ProxPalavra = NULL;
-    inicializaPalavraEncadeada(&listaTextos->pUltimo->palavra);
+    inicializaPalavraEncadeada(&(listaTextos->pUltimo->palavra));
     for(y = 0; y < tamanhoPalavra - rand() % tamanhoPalavra; y++)
     {
         inputLetra = (rand() % 26) + 65;
+        //printf("%c ", inputLetra);
         insereLetraEncadeada(&listaTextos->pUltimo->palavra, inputLetra);
+        //printf("\n");
     }
     listaTextos->pPrimeiro->AntPalavra = NULL;
     listaTextos->numeroPalavras++;
@@ -62,27 +64,25 @@ void removePalavraLoopEncadeado(TListaTexto* listaTextos)
 void imprimeTextoEncadeado(TListaTexto* listaTextos)
 {
     apontadorTexto pAux;
-    apontadorTexto pAux2;
+    apontadorLetra pAuxL;
 
     if(listaTextos->numeroPalavras == 0)
     {
         return;
     }
-
     pAux = listaTextos->pPrimeiro->ProxPalavra;
-    pAux2 = listaTextos->pUltimo;
     while(pAux != NULL)
     {
-        imprimePalavraEncadeada(&pAux->palavra);
+        //imprimePalavraEncadeada(&pAux->palavra);
+        pAuxL = pAux->palavra.pPrimeiro->ProxLetra;
+        while (pAuxL != NULL)
+        {
+            printf("%c", pAuxL->letra);
+            pAuxL = pAuxL->ProxLetra; /* próxima célula */
+        }
         printf(" ");
         pAux = pAux->ProxPalavra;
-    }
-        /*while(pAux2 != NULL)
-    {
-        imprimePalavraEncadeada(&pAux2->palavra);
-        printf(" ");
-        pAux2 = pAux2->AntPalavra;
-    }*/
+        }
     printf("\n");
     return;
 }
@@ -142,70 +142,6 @@ void ordenaPalavraEncadeada(TListaTexto texto)
     printf("Tempo total da CPU para organizar via selecao: %g ms\n", Tempo);
     printf("Total de Comparacoes: %d, Total de Movimentacoes: %d\n", comparacao, movimentacao);
     return;
-
-  /*void selectionSortTextoLe(TListaPLe texto, int flag){
-    for (int i = 0; i < texto.tam - 1; i++) {
-        min = min->pProx;
-        palavra = min->palavra;
-        aux = min->pProx;
-        aux2 = min;
-        for (int j = i + 1; j < texto.tam; j++) {
-            comp++;
-            if (palavra.primeiraletra > aux->palavra.primeiraletra) {
-                palavra = aux->palavra;
-                aux2 = aux;
-            }
-            aux = aux->pProx;
-        }
-        palavraaux = min->palavra;
-        min->palavra = palavra;
-        aux2->palavra = palavraaux;
-        mov++;
-    }
-
-
-
-
-
-
-    /*int n = texto->numeroPalavras;
-    if(n <= 1)
-    {
-        printf("Tempo total da CPU para organizar via selecao: 0 ms\n");
-        printf("Total de Comparacoes: 0, Total de Movimentacoes: 0\n");
-        return;
-    }
-    //
-    int comparacao = 0, movimentacao = 0; //Comparações e movimentação
-    clock_t Ticks[2];
-    Ticks[0] = clock();
-    Ticks[1] = clock();
-    //
-
-    apontadorTexto pAux = texto->pPrimeiro->ProxPalavra; //1
-    apontadorTexto pAux2 = pAux->ProxPalavra; //2
-    TlistaPalavra checar;
-    //printf("%c\n",texto->pPrimeiro->ProxPalavra->palavra.pPrimeiro->ProxLetra->letra);
-    //
-    int i,j,h, Min;
-    for(i = 0; i < n-1; i++)
-    {
-
-        //aux = v[Min];
-        //v[Min] = v[i];
-        //v[i] = aux;
-
-        //pAux2 = pAux2->ProxPalavra;
-        pAux = pAux->ProxPalavra;
-        pAux2 = pAux->ProxPalavra;
-    }
-
-    //
-    Ticks[1] = clock();
-    double Tempo = (Ticks[1] - Ticks[0]) * 1000.0 / CLOCKS_PER_SEC;
-    printf("Tempo total da CPU para organizar via selecao: %g ms\n", Tempo);
-    printf("Total de Comparacoes: %d, Total de Movimentacoes: %d\n", comparacao, movimentacao);
-    return;*/
 }
 
 

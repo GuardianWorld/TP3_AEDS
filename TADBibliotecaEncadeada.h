@@ -8,6 +8,7 @@
 typedef struct BibEncadeado* apontadorBib;
 typedef struct BibEncadeado{
     struct BibEncadeado* ProxTexto;
+    struct BibEncadeado* antTexto;
     TListaTexto Texto;
 }TBibliotecaEncadeada;
 
@@ -23,11 +24,11 @@ void removeTextoEncadeado(TListaBiblioteca* listaBib);
 void removeTextoLoopEncadeado(TListaBiblioteca* listaBib);
 void imprimeBibliotecaEncadeado(TListaBiblioteca* listaBib);
 void tamanhoBibliotecaEncadeado(TListaBiblioteca* listaBib);
-/*void ordenaTexto(TBiblioteca* Biblioteca);
 
-int partitionbib (TTexto* arr, int low, int high);
+void ordenaTextoBib(TListaBiblioteca bib);
+
+/*int partitionbib (TTexto* arr, int low, int high);
 void swapbib(TTexto* a, TTexto* b);
-
 void quickSortbib(TTexto* arr, int low, int high);
 */
 #endif // TTADBIBLIOTECAE_H_INCLUDED

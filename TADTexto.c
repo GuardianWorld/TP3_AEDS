@@ -104,15 +104,15 @@ void ordenaPalavra(TTexto* texto)
         for (j = i+1; j < n; j++){
             //ver1 = arrj[j];
             //ver2 = arr[min_idx];
+            comparacao++;
           if (texto->palavras[j].letras[0] < texto->palavras[min_idx].letras[0]){
             min_idx = j;
-            comparacao++;
           }
         }
         temp = texto->palavras[min_idx];
         texto->palavras[min_idx] = texto->palavras[i];
         texto->palavras[i] = temp;
-        movimentacao += 2;
+        movimentacao++;
     }
     Ticks[1] = clock();
     double Tempo = (Ticks[1] - Ticks[0]) * 1000.0 / CLOCKS_PER_SEC;
@@ -123,44 +123,46 @@ void ordenaPalavra(TTexto* texto)
 
 //Quicksort Texto
 
-void quickSort(TPalavra* palavra, int low, int high)
+void quickSort(TPalavra* palavra, int low, int high,int* comp, int* mov)
 {
     if (low < high)
     {
         /* pi is partitioning index, palavra[p] is now
            at right place */
-        int pi = particao(palavra, low, high);
+        int pi = particao(palavra, low, high,comp,mov);
 
         // Separately sort elements before
         // partition and after partition
-        quickSort(palavra, low, pi - 1);
-        quickSort(palavra, pi + 1, high);
+        quickSort(palavra, low, pi - 1, comp, mov);
+        quickSort(palavra, pi + 1, high, comp, mov);
     }
 }
 
-int particao (TPalavra* palavra, int low, int high)
+int particao (TPalavra* palavra, int low, int high,int* comp, int* mov)
 {
     int pivot = palavra[high].letras[0];    // pivot
     int i = (low - 1);  // Index of smaller element
     for (int j = low; j <= high- 1; j++)
     {
+        *comp += 1;
         // If current element is smaller than the pivot
         if (palavra[j].letras[0] < pivot)
         {
             i++;    // increment index of smaller element
-            troca(&palavra[i], &palavra[j]);
+            troca(&palavra[i], &palavra[j],mov);
         }
     }
-    troca(&palavra[i + 1], &palavra[high]);
+    troca(&palavra[i + 1], &palavra[high],mov);
     return (i + 1);
 }
 
 
-void troca(TPalavra* a, TPalavra* b)
+void troca(TPalavra* a, TPalavra* b,int* mov)
 {
     TPalavra t = *a;
     *a = *b;
     *b = t;
+    *mov += 1;
 }
 
 

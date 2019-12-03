@@ -120,7 +120,7 @@ void ordenaTexto(TBiblioteca* Biblioteca){
         temp = Biblioteca->textos[min_idx];
         Biblioteca->textos[min_idx] = Biblioteca->textos[i];
         Biblioteca->textos[i] = temp;
-        movimentacao += 2;
+        movimentacao++;
 
     }
     Ticks[1] = clock();
@@ -154,15 +154,15 @@ int partitionbib (TTexto* texto, int low, int high, int* comp, int* mov)
     int i = (low - 1);  // Index of smaller element
     for (int j = low; j <= high- 1; j++)
     {
+        *comp += 1;
         // If current element is smaller than the pivot
         if (texto[j].numeroPalavras < pivot)
         {
             i++;    // increment index of smaller element
             swapbib(&texto[i], &texto[j], mov);
-            *comp++;
         }
     }
-    swapbib(&texto[i + 1], &texto[high],mov);
+    swapbib(&texto[i + 1], &texto[high], mov);
     return (i + 1);
 }
 
@@ -172,5 +172,5 @@ void swapbib(TTexto* a, TTexto* b, int* mov)
     TTexto t = *a;
     *a = *b;
     *b = t;
-    *mov += 2;
+    *mov += 1;
 }

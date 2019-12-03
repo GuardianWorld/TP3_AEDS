@@ -21,8 +21,8 @@ void tamanhoTexto(TTexto* texto);
 
 void ordenaPalavra(TTexto* texto);
 
-int particao (TPalavra* arr, int low, int high);
-void troca(TPalavra* a, TPalavra* b);
-void quickSort(TPalavra* arr, int low, int high);
+int particao (TPalavra* arr, int low, int high,int* comp, int* mov);
+void troca(TPalavra* a, TPalavra* b,int* mov);
+void quickSort(TPalavra* arr, int low, int high,int* comp, int* mov);
 
 #endif // TADTEXTO_H_INCLUDED

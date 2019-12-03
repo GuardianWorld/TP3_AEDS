@@ -62,7 +62,6 @@ int main()
         printf(" | 10) Menu Ordenacao        |\n");
         printf(" | 11) Sair do programa      |\n");
         printf(" |===========================|\n\n");
-
         scanf("%d", &input);
         if(input == 0)
         {
@@ -212,7 +211,6 @@ int main()
         printf("| 10) Menu funcao           |\n");
         printf("| 11) Sair do programa      |\n");
         printf("|===========================|\n\n");
-
         scanf("%d", &input);
 
         if(input == 0)
@@ -226,7 +224,14 @@ int main()
         else if(input == 2)
         {
             int n = text.numeroPalavras;
-            quickSort(text.palavras, 0 , n-1);
+            Ticks[0] = clock();
+            x = 0;
+            y = 0;
+            quickSort(text.palavras, 0 , n-1, &x, &y);
+            Ticks[1] = clock();
+            double Tempo = (Ticks[1] - Ticks[0]) * 1000.0 / CLOCKS_PER_SEC;
+            printf("Tempo total da CPU para organizar via selecao: %g ms\n", Tempo);
+            printf("Total de Comparacoes: %d, Total de Movimentacoes: %d\n", x, y);
         }
         else if(input == 3)
         {
@@ -300,7 +305,7 @@ int main()
             {
                 removeLetraLoopEncadeada(&eword);
                 removePalavraLoopEncadeado(&etext);
-                //removeTextoLoop(&bib);
+                removeTextoLoopEncadeado(&ebib);
             }
             else
             {
@@ -336,13 +341,13 @@ int main()
         }
         else if(input == 3)
         {
+            removeTextoLoopEncadeado(&ebib);
             printf("Insira o numero de textos da biblioteca: ");
             scanf("%d", &input);
             printf("Insira o numero de palavras do texto: ");
             scanf("%d", &input2);
             printf("Insira o numero de letras da palavra: ");
             scanf("%d", &input3);
-            removeTextoLoopEncadeado(&ebib);
             for(x = 0; x < input; x++)
             {
                 insereTextoEncadeado(&ebib, input2, input3);
@@ -417,7 +422,25 @@ int main()
 
         if(input == 0)
         {
-            ordenaPalavraEncadeada(&etext);
+            ordenaPalavraEncadeada(etext);
+        }
+        else if(input == 1)
+        {
+            ordenaTextoBib(ebib);
+        }
+        else if(input == 4)
+        {
+            printf("Imprimindo Texto\n");
+            imprimeTextoEncadeado(&etext);
+            tamanhoTextoEncadeado(&etext);
+            system("pause");
+        }
+        else if(input == 5)
+        {
+            printf("Imprimindo Biblioteca\n");
+            imprimeBibliotecaEncadeado(&ebib);
+            tamanhoBibliotecaEncadeado(&ebib);
+            system("pause");
         }
         if(input == 10)
         {
