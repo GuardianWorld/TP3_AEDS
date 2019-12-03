@@ -2,8 +2,7 @@
 #include "TADPalavraEncadeada.h"
 void inicializaTextoEncadeado(TListaTexto* listaTextos)
 {
-    listaTextos->pPrimeiro = malloc(sizeof(TPalavraEncadeada));
-    inicializaPalavraEncadeada(&listaTextos->pPrimeiro->palavra);
+    listaTextos->pPrimeiro = (TPalavraEncadeada*)malloc(sizeof(TPalavraEncadeada));
     listaTextos->pUltimo = listaTextos->pPrimeiro;
     listaTextos->pPrimeiro->ProxPalavra = NULL;
     listaTextos->pPrimeiro->AntPalavra = NULL;
@@ -20,14 +19,14 @@ void inserePalavraEncadeado(TListaTexto* listaTextos, int tamanhoPalavra)
     listaTextos->pUltimo = listaTextos->pUltimo->ProxPalavra;
     listaTextos->pUltimo->ProxPalavra = NULL;
     inicializaPalavraEncadeada(&(listaTextos->pUltimo->palavra));
-    for(y = 0; y < tamanhoPalavra; y++)
+
+    for(y = 0; y < tamanhoPalavra - rand() % tamanhoPalavra; y++)
     {
         inputLetra = (rand() % 26) + 65;
         //printf("%c ", inputLetra);
         insereLetraEncadeada(&listaTextos->pUltimo->palavra, inputLetra);
         //printf("\n");
     }
-    listaTextos->pPrimeiro->AntPalavra = NULL;
     listaTextos->numeroPalavras++;
     return;
 }

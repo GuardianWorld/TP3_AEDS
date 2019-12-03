@@ -75,10 +75,20 @@ void imprimeBiblioteca(TBiblioteca* Biblioteca)
 {
     int y,z;
 
-
-    for(z = 0; z < Biblioteca->tamBiblioteca; z++){
+    int l = Biblioteca->tamBiblioteca;
+    int k = 0;
+    if(Biblioteca->tamBiblioteca > 150)
+    {
+        l = 150;
+    }
+    for(z = 0; z < l; z++){
         printf("\nImprimindo texto: %d\n\n",z+1);
-        for(y = 0; y < Biblioteca->textos[z].numeroPalavras; y++)
+        k = Biblioteca->textos[z].numeroPalavras;
+        if(Biblioteca->textos[z].numeroPalavras > 200)
+        {
+            k = 200;
+        }
+        for(y = 0; y < k; y++)
         {
             printf("%s ",Biblioteca->textos[z].palavras[y].letras);
         }
@@ -93,6 +103,8 @@ void tamanhoBiblioteca(TBiblioteca* Biblioteca)
 
 void ordenaTexto(TBiblioteca* Biblioteca){
 
+    printf("Biblioteca original: \n");
+    imprimeBiblioteca(Biblioteca);
     int comparacao = 0, movimentacao = 0; //Comparações e movimentação
     clock_t Ticks[2];
     Ticks[0] = clock();
@@ -124,6 +136,8 @@ void ordenaTexto(TBiblioteca* Biblioteca){
 
     }
     Ticks[1] = clock();
+    printf("Biblioteca ordenada: \n");
+    imprimeBiblioteca(Biblioteca);
     double Tempo = (Ticks[1] - Ticks[0]) * 1000.0 / CLOCKS_PER_SEC;
     printf("Tempo total da CPU para organizar via selecao: %g ms\n", Tempo);
     printf("Total de Comparacoes: %d, Total de Movimentacoes: %d\n", comparacao, movimentacao);

@@ -14,28 +14,29 @@ void insereTextoEncadeado(TListaBiblioteca* listaBib, int tamanhoTexto, int tama
     int x;
     int trandom;
     char inputLetra;
+    TListaTexto* Texto;
     listaBib->pUltimo->ProxTexto = malloc(sizeof(TBibliotecaEncadeada));
     listaBib->pUltimo->ProxTexto->antTexto = listaBib->pUltimo;
     listaBib->pUltimo = listaBib->pUltimo->ProxTexto;
     listaBib->pUltimo->ProxTexto = NULL;
+    Texto = &(listaBib->pUltimo->Texto);
     inicializaTextoEncadeado(&(listaBib->pUltimo->Texto));
     //inicializaPalavraEncadeada(&listaBib->pUltimo->Texto.pUltimo->palavra);
-    /*if(tamanhoTexto == 100000)
+    if(tamanhoTexto == 100000)
     {
         trandom = rand() % 50000;
     }
     else
     {
         trandom = rand() % tamanhoTexto;
-    }*/
-
-    for(x = 0; x < tamanhoTexto - rand() % tamanhoTexto; x++)
-    {
-        if(65 < listaBib->pUltimo->Texto.pPrimeiro->palavra.pPrimeiro->letra || listaBib->pUltimo->Texto.pPrimeiro->palavra.pPrimeiro->letra > 135)
-            printf("\nERROR");
-        inserePalavraEncadeado(&listaBib->pUltimo->Texto, tamanhoPalavra);
-        imprimeTextoEncadeado(&(listaBib->pUltimo->Texto));
     }
+
+    for(x = 0; x < tamanhoTexto - trandom; x++)
+    {
+        inserePalavraEncadeado(&listaBib->pUltimo->Texto, tamanhoPalavra);
+        //imprimeTextoEncadeado(&(listaBib->pUltimo->Texto));
+    }
+    //printf("\n=%c=\n",listaBib->pUltimo->Texto.pUltimo->palavra.pPrimeiro->ProxLetra->letra);
     listaBib->tamanhoBib++;
     return;
 }
@@ -74,30 +75,44 @@ void imprimeBibliotecaEncadeado(TListaBiblioteca* listaBib)
     apontadorTexto pAuxT;
     apontadorLetra pAuxL;
     int y = 0;
+    /*for(y = 0;y < listaBib->tamanhoBib;y++){
+        pAux = pAux->ProxTexto;
+        //imprimeTextoEncadeado(&pAux->Texto);
+        printf("\n=%c=",pAux->Texto.pPrimeiro->ProxPalavra->palavra.pPrimeiro->ProxLetra->letra);
+    }*/
+    int w = 0;
     if(listaBib->tamanhoBib == 0)
     {
         return;
     }
-    while (pAux != NULL)
+    int h = 0;
+    while (pAux != NULL && y!= 150)
     {
         y++;
         printf("Imprimindo texto %d\n", y);
         printf("\n");
         pAuxT = pAux->Texto.pPrimeiro->ProxPalavra;
-        while(pAuxT != NULL)
+        w = 0;
+        while(pAuxT != NULL && w != 1000)
         {
             pAuxL = pAuxT->palavra.pPrimeiro->ProxLetra;
             while (pAuxL != NULL)
             {
                 printf("%c", pAuxL->letra);
-                pAuxL = pAuxL->ProxLetra; /* próxima célula */
+                pAuxL = pAuxL->ProxLetra; /* próxima célula*/
             }
             printf(" ");
             pAuxT = pAuxT->ProxPalavra;
+            w++;
+        }
+        if(w >= 1000)
+        {
+            printf("...\n");
         }
         printf("\n");
         pAux = pAux->ProxTexto;
-    }
+
+}
     return;
 }
 

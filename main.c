@@ -20,12 +20,18 @@ int main()
     input = -2;
     //Vetores:
     TPalavra word;
+    TPalavra word2;
     TTexto text;
+    TTexto text2;
     TBiblioteca bib;
+    TBiblioteca bib2;
     //Encadeada
     TlistaPalavra eword;
+    TlistaPalavra eword2;
     TListaTexto etext;
+    TListaTexto etext2;
     TListaBiblioteca ebib;
+    TListaBiblioteca ebib2;
     srand((unsigned int)time(NULL));
 
     printf(" |========================|\n");
@@ -70,6 +76,9 @@ int main()
                 removeLetraLoop(&word);
                 removePalavraLoop(&text);
                 removeTextoLoop(&bib);
+                removeLetraLoop(&word2);
+                removePalavraLoop(&text2);
+                removeTextoLoop(&bib2);
             }
             else
             {
@@ -80,6 +89,9 @@ int main()
                 inicializaPalavra(&word);
                 inicializaTexto(&text,input2);
                 inicializaBiblioteca(&bib,input2, input3);
+                inicializaPalavra(&word2);
+                inicializaTexto(&text2,input2);
+                inicializaBiblioteca(&bib2,input2, input3);
                 inicializado = 1;
             }
         }
@@ -88,10 +100,12 @@ int main()
             printf("==Insira o numero de letras da palavra: ");
             scanf("%d", &input);
             removeLetraLoop(&word);
+            removeLetraLoop(&word2);
             for(x = 0; x < input; x++)
             {
                 inputLetra = (rand() % 26) + 65;
                 insereLetra(&word, inputLetra);
+                insereLetra(&word2, inputLetra);
             }
             input = -1;
         }
@@ -102,6 +116,7 @@ int main()
             printf("Insira o numero de letras da palavra: ");
             scanf("%d", &input2);
             removePalavraLoop(&text);
+            removePalavraLoop(&text2);
 
             for(x = 0; x < input; x++)
             {
@@ -111,9 +126,11 @@ int main()
                 {
                     inputLetra = (rand() % 26) + 65;
                     insereLetra(&word, inputLetra);
+                    insereLetra(&word2, inputLetra);
                 }
                 //printf("%s", word.palavra);
                 inserePalavra(&text, &word);
+                inserePalavra(&text2, &word);
             }
             input = -1;
         }
@@ -126,9 +143,11 @@ int main()
             printf("Insira o numero de letras da palavra: ");
             scanf("%d", &input3);
             removeTextoLoop(&bib);
+            removeTextoLoop(&bib2);
             for(x = 0; x < input; x++) //Biblioteca
             {
                 removePalavraLoop(&text);
+                removePalavraLoop(&text2);
                 if(input2 == 100000)
                 {
                     random = input2 - rand() % 50001;
@@ -140,14 +159,18 @@ int main()
                 for(y = 0; y < random ; y++) //Texto
                 {
                     removeLetraLoop(&word);
+                    removeLetraLoop(&word2);
                     for(z = 0; z < input3 - rand() % input3; z++) //Palavra
                     {
                         inputLetra = (rand() % 26) + 65;
                         insereLetra(&word, inputLetra);
+                        insereLetra(&word2, inputLetra);
                     }
                     inserePalavra(&text, &word);
+                    inserePalavra(&text2, &word);
                 }
                 insereTexto(&bib, &text);
+                insereTexto(&bib2, &text);
             }
             input = -1;
 
@@ -155,14 +178,17 @@ int main()
         else if(input == 4)
         {
             removeLetraLoop(&word);
+            removeLetraLoop(&word2);
         }
         else if(input == 5)
         {
             removePalavraLoop(&text);
+            removePalavraLoop(&text2);
         }
         else if(input == 6)
         {
             removeTextoLoop(&bib);
+            removeTextoLoop(&bib2);
         }
         else if(input == 7)
         {
@@ -202,12 +228,14 @@ int main()
         {
         printf("|===========================|\n");
         printf("|       Menu Ordenacao      |\n");
-        printf("| 0) Ordenar T. (Selecao)   |\n");
-        printf("| 1) Ordenar B. (Selecao)   |\n");
-        printf("| 2) Ordenar T. (QuickSort) |\n");
-        printf("| 3) Ordenar B. (QuickSort) |\n");
-        printf("| 4) Imprimir Texto         |\n");
-        printf("| 5) Imprimir Biblioteca    |\n");
+        printf("| 0) Ordenar T1. (Selecao)  |\n");
+        printf("| 1) Ordenar B1. (Selecao)  |\n");
+        printf("| 2) Ordenar T2. (Selecao)  |\n");
+        printf("| 3) Ordenar B2. (Selecao)  |\n");
+        printf("| 4) Ordenar T1. (QuickSort)|\n");
+        printf("| 5) Ordenar B1. (QuickSort)|\n");
+        printf("| 6) Ordenar T2. (QuickSort)|\n");
+        printf("| 7) Ordenar B2. (QuickSort)|\n");
         printf("| 10) Menu funcao           |\n");
         printf("| 11) Sair do programa      |\n");
         printf("|===========================|\n\n");
@@ -223,41 +251,75 @@ int main()
         }
         else if(input == 2)
         {
+            ordenaPalavra(&text2);
+        }
+        else if(input == 3)
+        {
+            ordenaTexto(&bib2);
+        }
+        else if(input == 4)
+        {
+            printf("Texto Original: \n");
+            imprimeTexto(&text);
             int n = text.numeroPalavras;
             Ticks[0] = clock();
             x = 0;
             y = 0;
             quickSort(text.palavras, 0 , n-1, &x, &y);
             Ticks[1] = clock();
+            printf("Texto Ordenado: \n");
+            imprimeTexto(&text);
             double Tempo = (Ticks[1] - Ticks[0]) * 1000.0 / CLOCKS_PER_SEC;
             printf("Tempo total da CPU para organizar via selecao: %g ms\n", Tempo);
             printf("Total de Comparacoes: %d, Total de Movimentacoes: %d\n", x, y);
         }
-        else if(input == 3)
+        else if(input == 5)
         {
+            printf("Bib Original: \n");
+            imprimeBiblioteca(&bib);
             int n = bib.tamBiblioteca;
             Ticks[0] = clock();
             x = 0;
             y = 0;
             quickSortbib(bib.textos, 0 , n-1, &x, &y);
             Ticks[1] = clock();
+            printf("Bib Ordenada: \n");
+            imprimeBiblioteca(&bib);
             double Tempo = (Ticks[1] - Ticks[0]) * 1000.0 / CLOCKS_PER_SEC;
             printf("Tempo total da CPU para organizar via selecao: %g ms\n", Tempo);
             printf("Total de Comparacoes: %d, Total de Movimentacoes: %d\n", x, y);
         }
-        else if(input == 4)
+        else if(input == 6)
         {
-            printf("Imprimindo Texto\n");
+            printf("Texto Original: \n");
             imprimeTexto(&text);
-            tamanhoTexto(&text);
-            system("pause");
+            int n = text2.numeroPalavras;
+            Ticks[0] = clock();
+            x = 0;
+            y = 0;
+            quickSort(text2.palavras, 0 , n-1, &x, &y);
+            Ticks[1] = clock();
+            printf("Texto Ordenado: \n");
+            imprimeTexto(&text);
+            double Tempo = (Ticks[1] - Ticks[0]) * 1000.0 / CLOCKS_PER_SEC;
+            printf("Tempo total da CPU para organizar via selecao: %g ms\n", Tempo);
+            printf("Total de Comparacoes: %d, Total de Movimentacoes: %d\n", x, y);
         }
-        else if(input == 5)
+        else if(input == 7)
         {
-            printf("Imprimindo Biblioteca\n");
-            imprimeBiblioteca(&bib);
-            tamanhoBiblioteca(&bib);
-            system("pause");
+            printf("Bib Ordenada: \n");
+            imprimeBiblioteca(&bib2);
+            int n = bib2.tamBiblioteca;
+            Ticks[0] = clock();
+            x = 0;
+            y = 0;
+            quickSortbib(bib2.textos, 0 , n-1, &x, &y);
+            Ticks[1] = clock();
+            printf("Bib Ordenada: \n");
+            imprimeBiblioteca(&bib2);
+            double Tempo = (Ticks[1] - Ticks[0]) * 1000.0 / CLOCKS_PER_SEC;
+            printf("Tempo total da CPU para organizar via selecao: %g ms\n", Tempo);
+            printf("Total de Comparacoes: %d, Total de Movimentacoes: %d\n", x, y);
         }
         else if(input == 10)
         {

@@ -69,11 +69,7 @@ void imprimeTexto(TTexto* texto)
     printf("\n");
     for(y = 0; y < texto->numeroPalavras; y++)
     {
-
-
         printf("%s ",texto->palavras[y].letras);
-
-
     }
     printf("\n");
     return;
@@ -87,6 +83,8 @@ void tamanhoTexto(TTexto* texto)
 
 void ordenaPalavra(TTexto* texto)
 {
+    printf("Texto original: \n");
+    imprimeTexto(texto);
     int comparacao = 0, movimentacao = 0; //Comparações e movimentação
     clock_t Ticks[2];
     Ticks[0] = clock();
@@ -115,6 +113,8 @@ void ordenaPalavra(TTexto* texto)
         movimentacao++;
     }
     Ticks[1] = clock();
+    printf("Texto Ordenado: \n");
+    imprimeTexto(texto);
     double Tempo = (Ticks[1] - Ticks[0]) * 1000.0 / CLOCKS_PER_SEC;
     printf("Tempo total da CPU para organizar via selecao: %g ms\n", Tempo);
     printf("Total de Comparacoes: %d, Total de Movimentacoes: %d\n", comparacao, movimentacao);

@@ -1,16 +1,16 @@
 # depslib dependency file v1.0
-1575345143 source:e:\arquivos de programas\c projects\tp3\tadbiblioteca.c
+1575414268 source:e:\arquivos de programas\c projects\tp3\tadbiblioteca.c
 	"TADTexto.h"
 	"TADPalavra.h"
 	"TADBiblioteca.h"
 	<time.h>
 
-1575345180 source:e:\arquivos de programas\c projects\tp3\tadtexto.c
+1575414116 source:e:\arquivos de programas\c projects\tp3\tadtexto.c
 	"TADTexto.h"
 	"TADPalavra.h"
 	<time.h>
 
-1575402215 source:e:\arquivos de programas\c projects\tp3\main.c
+1575411399 source:e:\arquivos de programas\c projects\tp3\main.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
@@ -34,10 +34,10 @@
 	<stdlib.h>
 	<stdio.h>
 
-1575133130 source:e:\arquivos de programas\c projects\tp3\tadpalavra.c
+1575414668 source:e:\arquivos de programas\c projects\tp3\tadpalavra.c
 	"TADPalavra.h"
 
-1575402229 source:e:\arquivos de programas\c projects\tp3\tadbibliotecaencadeada.c
+1575413675 source:e:\arquivos de programas\c projects\tp3\tadbibliotecaencadeada.c
 	"TADBibliotecaEncadeada.h"
 
 1575399275 source:e:\arquivos de programas\c projects\tp3\tadpalavraencadeada.c
@@ -47,7 +47,7 @@
 	"TADTexto.h"
 	"TADPalavra.h"
 
-1575402205 e:\arquivos de programas\c projects\tp3\tadbibliotecaencadeada.h
+1575404148 e:\arquivos de programas\c projects\tp3\tadbibliotecaencadeada.h
 	"TADTextoEncadeada.h"
 	"TADPalavraEncadeada.h"
 	<stdlib.h>
@@ -70,7 +70,7 @@
 	<time.h>
 	"TADPalavraEncadeada.h"
 
-1575402319 source:e:\arquivos de programas\c projects\tp3\tadtextoencadeada.c
+1575411756 source:e:\arquivos de programas\c projects\tp3\tadtextoencadeada.c
 	"TADTextoEncadeada.h"
 	"TADPalavraEncadeada.h"
 
