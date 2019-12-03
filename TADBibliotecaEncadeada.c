@@ -2,10 +2,10 @@
 
 void inicializaBibliotecaEncadeada(TListaBiblioteca* listaBib)
 {
-    listaBib->pPrimeiro = (apontadorBib) malloc(sizeof(TBibliotecaEncadeada));
+    listaBib->pPrimeiro = malloc(sizeof(TBibliotecaEncadeada));
+    listaBib->pUltimo = listaBib->pPrimeiro;
     listaBib->pPrimeiro->ProxTexto = NULL;
     listaBib->pPrimeiro->antTexto = NULL;
-    listaBib->pUltimo = listaBib->pPrimeiro;
     listaBib->tamanhoBib = 0;
 }
 void insereTextoEncadeado(TListaBiblioteca* listaBib, int tamanhoTexto, int tamanhoPalavra)
@@ -31,8 +31,10 @@ void insereTextoEncadeado(TListaBiblioteca* listaBib, int tamanhoTexto, int tama
 
     for(x = 0; x < tamanhoTexto - rand() % tamanhoTexto; x++)
     {
+        if(65 < listaBib->pUltimo->Texto.pPrimeiro->palavra.pPrimeiro->letra || listaBib->pUltimo->Texto.pPrimeiro->palavra.pPrimeiro->letra > 135)
+            printf("\nERROR");
         inserePalavraEncadeado(&listaBib->pUltimo->Texto, tamanhoPalavra);
-        //imprimeTextoEncadeado(&(listaBib->pUltimo->Texto));
+        imprimeTextoEncadeado(&(listaBib->pUltimo->Texto));
     }
     listaBib->tamanhoBib++;
     return;

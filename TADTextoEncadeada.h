@@ -28,8 +28,6 @@ void tamanhoTextoEncadeado(TListaTexto* listaTextos);
 
 void ordenaPalavraEncadeada(TListaTexto texto);
 
-//int particaoEncadeado (TPalavraEncadeada* arr, int low, int high);
-//void trocaEncadeado(TPalavraEncadeada* a, TPalavra* b);
-//void quickSortEncadeado (TPalavraEncadeada* arr, int low, int high);
+
 
 #endif // TADTEXTOE_H_INCLUDED

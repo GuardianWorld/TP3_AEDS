@@ -428,6 +428,23 @@ int main()
         {
             ordenaTextoBib(ebib);
         }
+        else if(input == 2)
+        {
+            printf("Texto original: \n");
+            imprimeTextoEncadeado(&etext);
+            int n = text.numeroPalavras;
+            Ticks[0] = clock();
+            x = 0;
+            y = 0;
+            z = etext.numeroPalavras;
+            QSTextoEncadeado(&etext, 0, z-1, &x, &y);
+            Ticks[1] = clock();
+            printf("Texto encadeado: \n");
+            imprimeTextoEncadeado(&etext);
+            double Tempo = (Ticks[1] - Ticks[0]) * 1000.0 / CLOCKS_PER_SEC;
+            printf("Tempo total da CPU para organizar via selecao: %g ms\n", Tempo);
+            printf("Total de Comparacoes: %d, Total de Movimentacoes: %d\n", x, y);
+        }
         else if(input == 4)
         {
             printf("Imprimindo Texto\n");

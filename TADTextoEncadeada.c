@@ -20,7 +20,7 @@ void inserePalavraEncadeado(TListaTexto* listaTextos, int tamanhoPalavra)
     listaTextos->pUltimo = listaTextos->pUltimo->ProxPalavra;
     listaTextos->pUltimo->ProxPalavra = NULL;
     inicializaPalavraEncadeada(&(listaTextos->pUltimo->palavra));
-    for(y = 0; y < tamanhoPalavra - rand() % tamanhoPalavra; y++)
+    for(y = 0; y < tamanhoPalavra; y++)
     {
         inputLetra = (rand() % 26) + 65;
         //printf("%c ", inputLetra);
@@ -68,7 +68,7 @@ void imprimeTextoEncadeado(TListaTexto* listaTextos)
 
     if(listaTextos->numeroPalavras == 0)
     {
-        return;
+        //return;
     }
     pAux = listaTextos->pPrimeiro->ProxPalavra;
     while(pAux != NULL)
@@ -144,49 +144,73 @@ void ordenaPalavraEncadeada(TListaTexto texto)
     return;
 }
 
-
-
-
 //Quicksort Texto
-/*
-void quickSort(TPalavra* palavra, int low, int high)
-{
-    if (low < high)
-    {
-        /* pi is partitioning index, palavra[p] is now
-           at right place */
-        /*int pi = particao(palavra, low, high);
 
-        // Separately sort elements before
-        // partition and after partition
-        quickSort(palavra, low, pi - 1);
-        quickSort(palavra, pi + 1, high);
+void QSTextoEncadeado(TListaTexto* texto, int inicio, int fim, int* comparacao, int* movimentacao)
+{
+    if(texto->numeroPalavras == 0)
+    {
+        return;
+    }
+    int x,y;
+    particaoTextoEncadeado(texto,inicio, fim, &x, &y, comparacao, movimentacao);
+    *comparacao += 2;
+    if (inicio < y)
+    {
+        QSTextoEncadeado(fim, y, texto,comparacao,movimentacao);
+    }
+    if (x < fim)
+    {
+        QSTextoEncadeado(x, fim, texto, comparacao, movimentacao);
     }
 }
 
-int particao (TPalavra* palavra, int low, int high)
+void particaoTextoEncadeado(TListaTexto* texto, int inicio, int fim,int *x, int *y, int* Comp, int* Mov)
 {
-    int pivot = palavra[high].letras[0];    // pivot
-    int i = (low - 1);  // Index of smaller element
-    for (int j = low; j <= high- 1; j++)
+    char pivot;
+    apontadorTexto pAux = texto->pPrimeiro;
+    apontadorTexto pAux2= pAux;
+    apontadorTexto pAux3= pAux;
+    TlistaPalavra auxP;
+    *x = inicio; *y = fim;
+    int xa, ya;
+    xa = *x;
+    ya = *y;
+    int h,j,k;
+    for(h = 0; h < xa;h++)
     {
-        // If current element is smaller than the pivot
-        if (palavra[j].letras[0] < pivot)
+        pAux2 = pAux2->ProxPalavra;
+    }
+    for(j = 0; j < ya; j++)
+    {
+        pAux3 = pAux3->ProxPalavra;
+    }
+    for (k = 0; k < (xa + ya)/2;k++)
+    {
+        pAux=pAux->ProxPalavra;
+    }
+        pivot = pAux->palavra.pPrimeiro->ProxLetra->letra;
+    while (*x <= *y)
+    {
+        while (pivot > pAux2->palavra.pPrimeiro->letra)
         {
-            i++;    // increment index of smaller element
-            troca(&palavra[i], &palavra[j]);
+            pAux2=pAux2->ProxPalavra;
+            *x += 1;
+        }
+        while (pivot < pAux3->palavra.pPrimeiro->letra)
+        {
+            pAux3=pAux3->AntPalavra;
+            *y += 1;
+        }
+        *Comp += 1;
+        if (*x <= *y)
+        {
+            auxP = pAux2->palavra;
+            pAux2->palavra = pAux3->palavra;
+            pAux3->palavra = auxP;
+            Mov += 1;
+            *x += 1;
+            *y += 1;
         }
     }
-    troca(&palavra[i + 1], &palavra[high]);
-    return (i + 1);
 }
-
-
-void troca(TPalavra* a, TPalavra* b)
-{
-    TPalavra t = *a;
-    *a = *b;
-    *b = t;
-}
-*/
-
