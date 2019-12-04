@@ -166,12 +166,16 @@ void QSTextoEncadeado(TListaTexto* texto, int inicio, int fim, int* comparacao, 
 
 void particaoTextoEncadeado(TListaTexto* texto, int inicio, int fim,int *x, int *y, int* Comp, int* Mov)
 {
-    char pivot;
-    apontadorTexto pAux = texto->pPrimeiro;
-    apontadorTexto pAux2= pAux;
-    apontadorTexto pAux3= pAux;
+    char meio;
+    apontadorTexto pAux;
+    pAux = texto->pPrimeiro;
+    apontadorTexto pAux2;
+    pAux2 = pAux;
+    apontadorTexto pAux3
+    pAux3 = pAux;
     TlistaPalavra auxP;
-    *x = inicio; *y = fim;
+    *x = inicio;
+    *y = fim;
     int xa, ya;
     xa = *x;
     ya = *y;
@@ -188,15 +192,15 @@ void particaoTextoEncadeado(TListaTexto* texto, int inicio, int fim,int *x, int 
     {
         pAux=pAux->ProxPalavra;
     }
-        pivot = pAux->palavra.pPrimeiro->ProxLetra->letra;
+        meio = pAux->palavra.pPrimeiro->ProxLetra->letra;
     while (*x <= *y)
     {
-        while (pivot > pAux2->palavra.pPrimeiro->letra)
+        while (meio > pAux2->palavra.pPrimeiro->letra)
         {
             pAux2=pAux2->ProxPalavra;
             *x += 1;
         }
-        while (pivot < pAux3->palavra.pPrimeiro->letra)
+        while (meio < pAux3->palavra.pPrimeiro->letra)
         {
             pAux3=pAux3->AntPalavra;
             *y += 1;
@@ -204,9 +208,9 @@ void particaoTextoEncadeado(TListaTexto* texto, int inicio, int fim,int *x, int 
         *Comp += 1;
         if (*x <= *y)
         {
-            auxP = pAux2->palavra;
-            pAux2->palavra = pAux3->palavra;
-            pAux3->palavra = auxP;
+            //auxP = pAux2->palavra;
+            //pAux2->palavra = pAux3->palavra;
+           // pAux3->palavra = auxP;
             Mov += 1;
             *x += 1;
             *y += 1;

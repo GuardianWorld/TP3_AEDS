@@ -92,6 +92,10 @@ void imprimeBiblioteca(TBiblioteca* Biblioteca)
         {
             printf("%s ",Biblioteca->textos[z].palavras[y].letras);
         }
+        if(k = 200)
+        {
+            printf("...");
+        }
     }
     printf("\n");
 }

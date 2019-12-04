@@ -27,8 +27,7 @@ void tamanhoBibliotecaEncadeado(TListaBiblioteca* listaBib);
 
 void ordenaTextoBib(TListaBiblioteca bib);
 
-/*int partitionbib (TTexto* arr, int low, int high);
-void swapbib(TTexto* a, TTexto* b);
-void quickSortbib(TTexto* arr, int low, int high);
-*/
+void Quicksort(int Inicio, int Fim, TListaBiblioteca* Bib, int* comp, int* mov);
+void ParticaoQSBib(TListaBiblioteca* bib, int Inicio, int Fim,int* x, int* y, int* comp, int* mov);
+
 #endif // TTADBIBLIOTECAE_H_INCLUDED

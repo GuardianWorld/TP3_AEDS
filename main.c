@@ -507,6 +507,22 @@ int main()
             printf("Tempo total da CPU para organizar via selecao: %g ms\n", Tempo);
             printf("Total de Comparacoes: %d, Total de Movimentacoes: %d\n", x, y);
         }
+        else if(input == 3)
+        {
+            printf("Biblioteca original: \n");
+            imprimeBibliotecaEncadeado(&ebib);
+            Ticks[0] = clock();
+            x = 0;
+            y = 0;
+            z = ebib.tamanhoBib;
+            Quicksort(0, z - 1, &ebib, &x, &y);
+            Ticks[1] = clock();
+            printf("Biblioteca encadeado: \n");
+            imprimeBibliotecaEncadeado(&ebib);
+            double Tempo = (Ticks[1] - Ticks[0]) * 1000.0 / CLOCKS_PER_SEC;
+            printf("Tempo total da CPU para organizar via selecao: %g ms\n", Tempo);
+            printf("Total de Comparacoes: %d, Total de Movimentacoes: %d\n", x, y);
+        }
         else if(input == 4)
         {
             printf("Imprimindo Texto\n");

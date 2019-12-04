@@ -172,47 +172,83 @@ void ordenaTextoBib(TListaBiblioteca bib)
     return;
 
 }
-/*
+
 //Quicksort
 
 
-void quickSortbib(TTexto* texto, int low, int high)
+void Quicksort(int Inicio, int Fim, TListaBiblioteca* Bib, int* comp, int* mov)
 {
-    if (low < high)
+    int x,y;
+    ParticaoQSBib(Bib,Inicio, Fim, &x, &y, comp, mov);
+    *comp += 2;
+    if (Inicio < y)
     {
-        /* pi is partitioning index, arr[p] is now
-           at right place */
-        /*int pi = partitionbib(texto, low, high);
-
-        // Separately sort elements before
-        // partition and after partition
-        quickSortbib(texto, low, pi - 1);
-        quickSortbib(texto, pi + 1, high);
+        Quicksort(Inicio, y, Bib, comp, mov);
     }
+    if (x < Fim)
+    {
+        Quicksort(x, Fim, Bib, comp, mov);
+    }
+    return;
 }
 
-int partitionbib (TTexto* texto, int low, int high)
-{
-    int pivot = texto[high].numeroPalavras;
-    //printf("=%d=",texto[high].numeroPalavras);    // pivot
-    int i = (low - 1);  // Index of smaller element
-    for (int j = low; j <= high- 1; j++)
+void ParticaoQSBib(TListaBiblioteca* bib, int Inicio, int Fim,int* x, int* y, int* comp, int* mov){
+    int centro, h,j,k;
+    apontadorBib pAux;
+    pAux = bib->pPrimeiro;
+    apontadorBib pAux2;
+    pAux2 = pAux;
+    apontadorBib pAux3;
+    pAux3 = pAux;
+    struct BibEncadeado auxTexto;
+    *x = Inicio;
+    *y = Fim;
+    int xa;
+    xa = *x;
+    int ya;
+    ya = *y;
+
+    for (k = 0;k < (xa+ya)/2 ;k++)
     {
-        // If current element is smaller than the pivot
-        if (texto[j].numeroPalavras < pivot)
+        pAux = pAux->ProxTexto;
+    }
+    centro = pAux->Texto.numeroPalavras;
+    for(h = 0; h < xa; h++)
+    {
+        pAux2 = pAux2->ProxTexto;
+    }
+
+    for(j = 0;j < ya; j++)
+    {
+        pAux3 = pAux3->ProxTexto;
+    }
+    while (xa <= ya)
+    {
+        *comp += 4;
+        while (centro > pAux2->Texto.numeroPalavras)
         {
-            i++;    // increment index of smaller element
-            swapbib(&texto[i], &texto[j]);
+            pAux2 = pAux2->ProxTexto;
+            *x += 1;
+        }
+
+        while (centro < pAux3->Texto.numeroPalavras)
+        {
+            pAux3 = pAux3->ProxTexto;
+            *y += 1;
+        }
+        xa = *x;
+        ya = *y;
+        if (xa <= ya)
+        {
+            auxTexto.Texto = pAux2->Texto;
+            pAux2->Texto = pAux3->Texto;
+            pAux3->Texto = auxTexto.Texto;
+
+            *x += 1;
+            *y -= 1;
+            *mov += 1;
+            xa = *x;
+            ya = *y;
         }
     }
-    swapbib(&texto[i + 1], &texto[high]);
-    return (i + 1);
 }
-
-
-void swapbib(TTexto* a, TTexto* b)
-{
-    TTexto t = *a;
-    *a = *b;
-    *b = t;
-}*/

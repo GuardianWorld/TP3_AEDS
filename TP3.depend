@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1575414268 source:e:\arquivos de programas\c projects\tp3\tadbiblioteca.c
+1575423747 source:e:\arquivos de programas\c projects\tp3\tadbiblioteca.c
 	"TADTexto.h"
 	"TADPalavra.h"
 	"TADBiblioteca.h"
@@ -10,7 +10,7 @@
 	"TADPalavra.h"
 	<time.h>
 
-1575411399 source:e:\arquivos de programas\c projects\tp3\main.c
+1575424300 source:e:\arquivos de programas\c projects\tp3\main.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
@@ -37,7 +37,7 @@
 1575414668 source:e:\arquivos de programas\c projects\tp3\tadpalavra.c
 	"TADPalavra.h"
 
-1575413675 source:e:\arquivos de programas\c projects\tp3\tadbibliotecaencadeada.c
+1575424394 source:e:\arquivos de programas\c projects\tp3\tadbibliotecaencadeada.c
 	"TADBibliotecaEncadeada.h"
 
 1575399275 source:e:\arquivos de programas\c projects\tp3\tadpalavraencadeada.c
@@ -47,7 +47,7 @@
 	"TADTexto.h"
 	"TADPalavra.h"
 
-1575404148 e:\arquivos de programas\c projects\tp3\tadbibliotecaencadeada.h
+1575424295 e:\arquivos de programas\c projects\tp3\tadbibliotecaencadeada.h
 	"TADTextoEncadeada.h"
 	"TADPalavraEncadeada.h"
 	<stdlib.h>
