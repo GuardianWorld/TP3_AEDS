@@ -170,10 +170,11 @@ void particaoTextoEncadeado(TListaTexto* texto, int inicio, int fim,int *x, int 
     apontadorTexto pAux;
     pAux = texto->pPrimeiro;
     apontadorTexto pAux2;
-    pAux2 = pAux;
-    apontadorTexto pAux3
-    pAux3 = pAux;
-    TlistaPalavra auxP;
+    pAux2 = texto->pPrimeiro;
+    apontadorTexto pAux3;
+    pAux3 = texto->pPrimeiro;
+    apontadorTexto auxP;
+    apontadorTexto auxP2;
     *x = inicio;
     *y = fim;
     int xa, ya;
@@ -208,12 +209,16 @@ void particaoTextoEncadeado(TListaTexto* texto, int inicio, int fim,int *x, int 
         *Comp += 1;
         if (*x <= *y)
         {
-            //auxP = pAux2->palavra;
-            //pAux2->palavra = pAux3->palavra;
-           // pAux3->palavra = auxP;
+            auxP = pAux2->ProxPalavra;
+            auxP2 = pAux3->ProxPalavra;
+            pAux2->AntPalavra->ProxPalavra = pAux3;
+            pAux3->AntPalavra->ProxPalavra = pAux2;
+            pAux3->ProxPalavra = auxP;
+            pAux2->ProxPalavra = auxP2;
+
             Mov += 1;
             *x += 1;
-            *y += 1;
+            *y -= 1;
         }
     }
 }

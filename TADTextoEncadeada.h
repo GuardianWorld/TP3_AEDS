@@ -9,7 +9,7 @@
 typedef struct TextoEncadeado* apontadorTexto;
 typedef struct TextoEncadeado{
     struct TextoEncadeado* ProxPalavra;
-    struct TextoEncadead* AntPalavra;
+    struct TextoEncadeado* AntPalavra;
     TlistaPalavra palavra;
 }TTextoEncadeada;
 
